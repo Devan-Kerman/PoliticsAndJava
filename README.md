@@ -19,7 +19,8 @@ A Simple Politics and War API wrapper for Java<br/>
 `
 APIAggregatorBuilder aab = new APIAggregatorBuilder();<br/>
 aab.setKey("loluactuallythought?"); // Sets what api key to use<br/>
-aab.setTimeout(ChronoUnit.HOURS, 5); // How long until cached information is deemed "invalid"<br/>
+aab.setTimeout(ChronoUnit.HOURS, 5); <br/>
+// How long until cached information is deemed "invalid"
 aa.setCacheSize(100);<br/>
 APIAggregator api = aab.build();
 Alliance aa = api.getAlliance(760); // gets a new alliance with the id of 760
