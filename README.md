@@ -18,12 +18,14 @@ A Simple Politics and War API wrapper for Java<br/>
 # Sample code
 `
 APIAggregatorBuilder aab = new APIAggregatorBuilder();<br/>
-aab.setKey("loluactuallythought?"); // Sets what api key to use<br/>
-aab.setTimeout(ChronoUnit.HOURS, 5); <br/>
+aab.setKey("loluactuallythought?");<br/> 
+// Sets what api key to use
+<br/>aab.setTimeout(ChronoUnit.HOURS, 5); <br/>
 // How long until cached information is deemed "invalid"
-aa.setCacheSize(100);<br/>
-APIAggregator api = aab.build();
-Alliance aa = api.getAlliance(760); // gets a new alliance with the id of 760
-System.out.println(aa.toString());
+<br/>aa.setCacheSize(100);<br/>
+APIAggregator api = aab.build();<br/>
+Alliance aa = api.getAlliance(760);<br/>
+// gets a new alliance with the id of 760
+<br/>System.out.println(aa.toString());<br/>
 `
 
