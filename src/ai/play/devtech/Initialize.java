@@ -12,7 +12,7 @@ public class Initialize {
 	public static void main(String[] args) {
 		APIAggregatorBuilder builder = new APIAggregatorBuilder();
 		builder.setCacheSize(500);
-		builder.setKey("");
+		builder.setKey("testkey");
 		APIAggregator aggregator = builder.build();
 		NationExcerpt[] a = aggregator.getNations(new NationsQuery());
 		System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(a));
