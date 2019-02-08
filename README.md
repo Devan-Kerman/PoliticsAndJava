@@ -15,4 +15,11 @@ A Simple Politics and War API wrapper for Java<br/>
   #### 4. Fast - although this layer of type correction does add a delay, built in caching is an important part of the library<br/>
   #### 5. Diverse - will probably copy paste some parts of my old wrapper into this one, such as webscraping and other utilities.<br/>
   #### 6. Easy to use - throwing somewhat usefull exceptions, well, that's what it attempts atleast.<br/>
+# Sample code
+`
+APIAggregatorBuilder aab = new APIAggregatorBuilder();
+aab.setKey("loluactuallythought?"); // Sets what api key to use
+aab.setTimeout(""); // How long until cached information is deemed "invalid"
+aa.setCacheSize(100);
+`
 
