@@ -1,9 +1,11 @@
 package ai.play.devtech.core.api.objects;
 
 
+import org.beryx.awt.color.ColorFactory;
+
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * This is the api object representing an alliance
@@ -44,7 +46,7 @@ public class Alliance extends APIObject {
 	public float score;
 	
 	/**
-	 * The alliance color
+	 * Color of the alliance (enum form) use {@link ColorFactory#valueOf(String)} in order to obtain java color object
 	 */
 	@JSONName(name = "color")
 	public Colors color;
@@ -150,4 +152,9 @@ public class Alliance extends APIObject {
 	 */
 	@JSONName(name = "treasures")
 	public byte treasures;
+
+	@Override
+	public long getID() {
+		return aaid;
+	}
 }

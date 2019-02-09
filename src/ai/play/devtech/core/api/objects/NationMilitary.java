@@ -2,7 +2,7 @@ package ai.play.devtech.core.api.objects;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.AARanks;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class NationMilitary extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -45,5 +45,10 @@ public class NationMilitary extends APIObject {
 	 */
 	@JSONName(name = "alliance_position")
 	public byte aarank;
+
+	@Override
+	public long getID() {
+		return nid;
+	}
 
 }

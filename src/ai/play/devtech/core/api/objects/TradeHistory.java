@@ -5,7 +5,8 @@ import java.util.Date;
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Resource;
 import ai.play.devtech.core.api.enums.TradeOfferType;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.util.math.CastMath;
 
 public class TradeHistory extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -33,5 +34,10 @@ public class TradeHistory extends APIObject {
 	
 	@JSONName(name = "price")
 	public float price;
+
+	@Override
+	public long getID() {
+		return CastMath.twoIntsToLong(offeringnid, acceptornid);
+	}
 
 }

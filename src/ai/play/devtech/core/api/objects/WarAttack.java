@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.AttackType;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class WarAttack extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -77,5 +77,10 @@ public class WarAttack extends APIObject {
 	
 	@JSONName(name = "def_mun_used")
 	public float defMunUsed;
+
+	@Override
+	public long getID() {
+		return attackid;
+	}
 	
 }

@@ -10,7 +10,7 @@ import ai.play.devtech.core.api.enums.EconomicPolicies;
 import ai.play.devtech.core.api.enums.Season;
 import ai.play.devtech.core.api.enums.SocialPolicies;
 import ai.play.devtech.core.api.enums.WarPolicies;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class Nation extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -248,4 +248,8 @@ public class Nation extends APIObject {
 	
 	@JSONName(name = "season")
 	public Season season;
+
+	public long getID() {
+		return nationid;
+	}
 }

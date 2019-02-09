@@ -5,7 +5,7 @@ import java.util.Date;
 import com.google.common.base.MoreObjects;
 
 import ai.play.devtech.APIObject;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class LowestBuy extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -14,7 +14,7 @@ public class LowestBuy extends APIObject {
 	public Date date;
 	
 	@JSONName(name = "nationid")
-	public int nationid;
+	public int nid;
 	
 	@JSONName(name = "amount")
 	public float amount;
@@ -29,9 +29,14 @@ public class LowestBuy extends APIObject {
 	public String toString() {
 		return MoreObjects.toStringHelper(this)
 				.add("date", date)
-				.add("nationid", nationid)
+				.add("nationid", nid)
 				.add("amount", amount)
 				.add("price", price)
 				.add("totalval", totalval).toString();
+	}
+
+	@Override
+	public long getID() {
+		return nid;
 	}
 }

@@ -1,7 +1,7 @@
 package ai.play.devtech.core.api.objects;
 
 import ai.play.devtech.APIObject;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * The object in the Cities API
@@ -31,5 +31,10 @@ public class CityExcerpt extends APIObject {
 	
 	@JSONName(name = "land")
 	public float land;
+
+	@Override
+	public long getID() {
+		return cityid;
+	}
 
 }

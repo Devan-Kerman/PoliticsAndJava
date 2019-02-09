@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Continents;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class City extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -164,5 +164,10 @@ public class City extends APIObject {
 	
 	@JSONName(name = "imp_drydock")
 	public byte drydocks;
+
+	@Override
+	public long getID() {
+		return id;
+	}
 
 }

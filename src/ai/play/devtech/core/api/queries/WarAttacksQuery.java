@@ -29,6 +29,7 @@ public class WarAttacksQuery {
 		query.put("war_id", String.valueOf(score));
 		return this;
 	}
+	
 	public String build(String key) {
 		if(query.size() == 0)
 			return "";

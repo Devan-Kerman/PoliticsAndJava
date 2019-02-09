@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class NationExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +33,7 @@ public class NationExcerpt extends APIObject {
 	public String allaince;
 	
 	@JSONName(name = "allianceid")
-	public String aaid;
+	public int aaid;
 	
 	@JSONName(name = "allianceposition")
 	public byte aarank;
@@ -61,6 +61,11 @@ public class NationExcerpt extends APIObject {
 	
 	@JSONName(name = "minutessinceactive")
 	public long mininactive;
+
+	@Override
+	public long getID() {
+		return nid;
+	}
 	
 	
 }

@@ -4,7 +4,7 @@ package ai.play.devtech.core.api.objects;
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
 import ai.play.devtech.core.api.enums.WarPolicies;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * An object represented in the Alliance Member api
@@ -163,5 +163,10 @@ public class AllianceMember extends APIObject {
 	
 	@JSONName(name = "spies")
 	public byte spies;
+
+	@Override
+	public long getID() {
+		return nationid;
+	}
 	
 }

@@ -1,8 +1,10 @@
 package ai.play.devtech.core.api.objects;
 
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
-public class Applicant {
+public class Applicant extends APIObject {
+	private static final long serialVersionUID = 1L;
 
 	@JSONName(name = "nationid")
 	public int nationid;
@@ -21,4 +23,9 @@ public class Applicant {
 	
 	@JSONName(name = "score")
 	public float score;
+
+	@Override
+	public long getID() {
+		return nationid;
+	}
 }

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.WarTypes;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class WarExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -31,5 +31,10 @@ public class WarExcerpt extends APIObject {
 	
 	@JSONName(name = "date")
 	public Date date;
+
+	@Override
+	public long getID() {
+		return wid;
+	}
 	
 }

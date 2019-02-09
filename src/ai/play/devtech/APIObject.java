@@ -5,7 +5,7 @@ import java.time.Instant;
 
 import com.google.gson.Gson;
 
-public class APIObject implements Serializable, Cloneable {
+public abstract class APIObject implements Serializable, Cloneable {
 
 	/**
 	 * 
@@ -33,4 +33,6 @@ public class APIObject implements Serializable, Cloneable {
 	protected Object clone() {
 		return GSON.fromJson(GSON.toJson(this), this.getClass());
 	}
+	
+	public abstract long getID();
 }

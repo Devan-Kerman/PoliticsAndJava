@@ -2,7 +2,7 @@ package ai.play.devtech.core.api.objects.tradeprice;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Resource;
-import ai.play.devtech.core.objects.JSONName;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class TradePrice extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -21,5 +21,10 @@ public class TradePrice extends APIObject {
 	
 	@JSONName(name = "lowestbuy")
 	public LowestBuy bestBuy;
+
+	@Override
+	public long getID() {
+		return resource.ordinal();
+	}
 
 }

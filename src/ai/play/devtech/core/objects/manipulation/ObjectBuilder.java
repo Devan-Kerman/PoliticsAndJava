@@ -1,4 +1,4 @@
-package ai.play.devtech.core.objects;
+package ai.play.devtech.core.objects.manipulation;
 
 import java.awt.Color;
 import java.lang.reflect.Array;
