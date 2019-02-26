@@ -1,11 +1,11 @@
-package main.java.ai.play.devtech.core.hooks;
+package ai.play.devtech.core.hooks;
 
 import java.util.Map;
 import java.util.TimerTask;
 import java.util.function.Supplier;
 import java.util.function.Consumer;
 
-import main.java.ai.play.devtech.APIObject;
+import ai.play.devtech.APIObject;
 
 public class VarietyHook<T extends APIObject> extends TimerTask implements Runnable {
 	

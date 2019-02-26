@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.errors;
+package ai.play.devtech.core.errors;
 
 
 public class InvalidAPIURLException extends RuntimeException {

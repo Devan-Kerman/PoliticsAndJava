@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.api;
+package ai.play.devtech.core.api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,8 +14,9 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 import com.google.gson.Gson;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.errors.InvalidAPIURLException;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.DLogger;
+import ai.play.devtech.core.errors.InvalidAPIURLException;
 
 public class APICache {
 
@@ -26,7 +27,7 @@ public class APICache {
 	protected Set<String> current = new ConcurrentSkipListSet<>();
 	
 	@SuppressWarnings("unchecked")
-	protected <T> T request(String url, Class<T> cl) throws InvalidAPIURLException {
+	protected <T> T request(String url, Class<T> cl) {
 		while(true)
 			if(!current.contains(url))
 				break;
@@ -34,11 +35,13 @@ public class APICache {
 		Entry in = datamap.get(url);
 		if(in != null)
 			if(in.death.isAfter(Instant.now())) {
+				DLogger.debug("Cache hit");
 				current.remove(url);
 				return (T) in.data;
 			} else
 				datamap.remove(url);
 		StringBuilder builder = new StringBuilder();
+		DLogger.debug("Cache miss");
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
 			reader.lines().forEach(builder::append);
@@ -57,7 +60,6 @@ public class APICache {
 		if(type != null && type.isArray() && APIObject.class.isAssignableFrom(type.getComponentType()))
 			for(int x = 0; x < Array.getLength(t); x++)
 				((APIObject)Array.get(t, x)).birth = inception;
-		
 		datamap.put(url, new Entry(t, inception.plus(decay.time, decay.unit)));
 		current.remove(url);
 		return t;
@@ -75,6 +77,9 @@ public class APICache {
 		this(50, new Period(time, amount));
 	}
 	
+	public APICache(ChronoUnit time, int amount, int size) {
+		this(size, new Period(time, amount));
+	}
 
 	public APICache(int size, Period p) {
 		datamap = new ConcurrentHashMap<>(size);

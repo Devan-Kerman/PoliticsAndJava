@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.web;
+package ai.play.devtech.core.web;
 
 import java.io.Closeable;
 import java.util.Arrays;
@@ -7,12 +7,12 @@ import java.util.List;
 
 import org.jsoup.nodes.Element;
 
-import main.java.ai.play.devtech.DLogger;
-import main.java.ai.play.devtech.core.api.enums.Colors;
-import main.java.ai.play.devtech.core.objects.lists.ListUtils;
-import main.java.ai.play.devtech.core.web.enums.BountyTypes;
-import main.java.ai.play.devtech.core.web.objects.Bounty;
-import main.java.ai.play.devtech.core.web.objects.ColorVal;
+import ai.play.devtech.DLogger;
+import ai.play.devtech.core.api.enums.Colors;
+import ai.play.devtech.core.objects.lists.ListUtils;
+import ai.play.devtech.core.web.enums.BountyTypes;
+import ai.play.devtech.core.web.objects.Bounty;
+import ai.play.devtech.core.web.objects.ColorVal;
 import io.webfolder.ui4j.api.browser.BrowserEngine;
 import io.webfolder.ui4j.api.browser.BrowserFactory;
 

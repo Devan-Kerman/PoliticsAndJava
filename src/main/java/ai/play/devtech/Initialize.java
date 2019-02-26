@@ -1,25 +1,29 @@
-package main.java.ai.play.devtech;
+package ai.play.devtech;
 
-import com.google.gson.GsonBuilder;
+import java.util.Random;
 
-import main.java.ai.play.devtech.core.api.APIAggregator;
-import main.java.ai.play.devtech.core.api.APIAggregatorBuilder;
-import main.java.ai.play.devtech.core.api.objects.NationExcerpt;
-import main.java.ai.play.devtech.core.api.queries.NationsQuery;
+import ai.play.devtech.core.hooks.ArrayHook;
 
 public class Initialize {
+	public static void main(String[] args) throws Exception {
+		Integer[] intar = new Integer[100];
+		ArrayHook<Integer> ints = new ArrayHook<>(() -> semiRand(intar), (a, b) -> a.equals(b), false);
+		ints.addListener("gotemlool", System.out::println);
+	}
 	
-	public static void main(String[] args) {
-		APIAggregatorBuilder builder = new APIAggregatorBuilder();
-		builder.setCacheSize(500);
-		builder.setKey("testkey");
-		APIAggregator aggregator = builder.build();
-		NationExcerpt[] a = aggregator.getNations(new NationsQuery());
-		System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(a));
+	static final Random rand = new Random();
+	public static Integer[] semiRand(Integer[] semi) {
+		for(int x = 0; x < semi.length; x+=rand.nextInt((int)Math.sqrt(semi.length))) {
+			System.out.print("Replaced " + semi[x]);
+			semi[x] = rand.nextInt();
+			System.out.println(" with " + semi[x]);
+		}
+		return semi;
 	}
 
-	private Initialize() {
-		
-	}
 	
+	private Initialize() {
+
+	}
+
 }

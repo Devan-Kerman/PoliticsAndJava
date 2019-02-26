@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.web.enums;
+package ai.play.devtech.core.web.enums;
 
 
 public enum BountyTypes {

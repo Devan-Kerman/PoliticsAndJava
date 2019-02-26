@@ -1,10 +1,10 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
 import java.util.Date;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
-import main.java.ai.play.devtech.util.math.CastMath;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.util.math.CastMath;
 
 public class War extends APIObject {
 	private static final long serialVersionUID = 1L;

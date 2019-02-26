@@ -1,9 +1,6 @@
-package main.java.ai.play.devtech.core.hooks;
+package ai.play.devtech.core.hooks;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.TimerTask;
 import java.util.function.BiPredicate;
@@ -55,27 +52,25 @@ public class ArrayHook<T> extends TimerTask implements Runnable {
 	@Override
 	public void run() {
 		T[] newdata = agg.get();
-		List<T> list = Arrays.asList(newdata);
-		List<T> oldlist = Arrays.asList(this.old);
-		List<T> dif = new LinkedList<>();
-		if (reverse)
-			list.stream().filter(i -> pC(oldlist, i)).forEach(dif::add);
-		else
-			oldlist.stream().filter(i -> pC(list, i)).forEach(dif::add);
-		old = newdata;
-		dif.forEach(t -> listeners.forEach((k, v) -> v.accept(t)));
-		if(escape != null)
-			escape.run();
-	}
+		if (reverse) {
+			outer: for (T t : old) {
+				for (T c : newdata)
+					if (equals.test(t, c))
+						continue outer;
+				listeners.forEach((k, v) -> v.accept(t));
+			}
+		} else {
+			outer: for (T t : newdata) {
+				for (T c : old)
+					if (equals.test(t, c))
+						continue outer;
+				listeners.forEach((k, v) -> v.accept(t));
+			}
+		}
 
-	/*
-	 * just ot check if this list has this object
-	 */
-	public boolean pC(List<T> t, T obj) {
-		for (T tobj : t)
-			if (equals.test(tobj, obj))
-				return true;
-		return false;
+		old = newdata;
+		if (escape != null)
+			escape.run();
 	}
 
 }

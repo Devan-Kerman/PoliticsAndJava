@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.util.math;
+package ai.play.devtech.util.math;
 
 public class CastMath {
 

@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.api.enums;
+package ai.play.devtech.core.api.enums;
 
 /**
  * This is not an enum because the rank of -3 means of a inexisting alliance, and can't be put in enum form that's easily parsable

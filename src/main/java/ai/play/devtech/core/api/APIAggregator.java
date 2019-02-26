@@ -1,18 +1,19 @@
-package main.java.ai.play.devtech.core.api;
+package ai.play.devtech.core.api;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Map;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.api.enums.Resource;
-import main.java.ai.play.devtech.core.api.objects.*;
-import main.java.ai.play.devtech.core.api.objects.tradeprice.TradePrice;
-import main.java.ai.play.devtech.core.api.queries.NationsQuery;
-import main.java.ai.play.devtech.core.api.queries.TradeHistoryQuery;
-import main.java.ai.play.devtech.core.api.queries.WarAttacksQuery;
-import main.java.ai.play.devtech.core.errors.UnsuccessfullAPIException;
-import main.java.ai.play.devtech.core.objects.manipulation.ObjectBuilder;
-import main.java.ai.play.devtech.core.api.objects.Alliance;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.Resource;
+import ai.play.devtech.core.api.objects.*;
+import ai.play.devtech.core.api.objects.tradeprice.TradePrice;
+import ai.play.devtech.core.api.queries.NationsQuery;
+import ai.play.devtech.core.api.queries.TradeHistoryQuery;
+import ai.play.devtech.core.api.queries.WarAttacksQuery;
+import ai.play.devtech.core.errors.UnsuccessfullAPIException;
+import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
+import ai.play.devtech.core.api.objects.Alliance;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class APIAggregator {
@@ -22,9 +23,32 @@ public class APIAggregator {
 	public static final String BASE = "https://politicsandwar.com/api/%s/%s";
 
 	/**
-	 * Use {@link APIAggregatorBuilder}
+	 * you can use {@link APIAggregatorBuilder}
 	 */
-	APIAggregator() {
+	public APIAggregator(String key, ChronoUnit unit, int time, int cachesize) {
+		this.key = key;
+		cache = new APICache(unit, time, cachesize);
+	}
+	
+	/**
+	 * you can use {@link APIAggregatorBuilder}
+	 */
+	public APIAggregator(String key) {
+		this(key, ChronoUnit.HOURS, 1, 50);
+	}
+	
+	/**
+	 * you can use {@link APIAggregatorBuilder}
+	 */
+	public APIAggregator(String key, int size) {
+		this(key, ChronoUnit.HOURS, 1, size);
+	}
+	
+	/**
+	 * you can use {@link APIAggregatorBuilder}
+	 */
+	public APIAggregator(String key, ChronoUnit unit, int time) {
+		this(key, unit, time, 50);
 	}
 
 	public WarAttack[] getAttacks(WarAttacksQuery query) {

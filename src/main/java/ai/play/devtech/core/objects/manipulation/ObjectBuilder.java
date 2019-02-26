@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.objects.manipulation;
+package ai.play.devtech.core.objects.manipulation;
 
 import java.awt.Color;
 import java.lang.reflect.Array;
@@ -14,7 +14,7 @@ import org.beryx.awt.color.ColorFactory;
 
 import com.google.common.base.Defaults;
 
-import main.java.ai.play.devtech.DLogger;
+import ai.play.devtech.DLogger;
 
 public class ObjectBuilder<T> {
 	private Class<T> type;

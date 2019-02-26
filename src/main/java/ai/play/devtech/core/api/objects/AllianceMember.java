@@ -1,10 +1,10 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.api.enums.Colors;
-import main.java.ai.play.devtech.core.api.enums.WarPolicies;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.Colors;
+import ai.play.devtech.core.api.enums.WarPolicies;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * An object represented in the Alliance Member api

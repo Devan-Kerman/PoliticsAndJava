@@ -1,8 +1,8 @@
-package main.java.ai.play.devtech.core.web.objects;
+package ai.play.devtech.core.web.objects;
 
 
-import main.java.ai.play.devtech.core.web.enums.BountyTypes;
-import main.java.ai.play.devtech.util.strings.ToString;
+import ai.play.devtech.core.web.enums.BountyTypes;
+import ai.play.devtech.util.strings.ToString;
 
 public class Bounty {
 

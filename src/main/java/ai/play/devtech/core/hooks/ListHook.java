@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.hooks;
+package ai.play.devtech.core.hooks;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;

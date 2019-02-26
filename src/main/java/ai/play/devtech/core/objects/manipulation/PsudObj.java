@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.objects.manipulation;
+package ai.play.devtech.core.objects.manipulation;
 
 import java.util.HashMap;
 

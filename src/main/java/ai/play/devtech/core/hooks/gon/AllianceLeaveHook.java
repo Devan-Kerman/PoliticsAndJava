@@ -1,11 +1,11 @@
-package main.java.ai.play.devtech.core.hooks.gon;
+package ai.play.devtech.core.hooks.gon;
 
 import java.util.Arrays;
 import java.util.List;
 
-import main.java.ai.play.devtech.core.api.APIAggregator;
-import main.java.ai.play.devtech.core.api.objects.NationExcerpt;
-import main.java.ai.play.devtech.core.hooks.ListHook;
+import ai.play.devtech.core.api.APIAggregator;
+import ai.play.devtech.core.api.objects.NationExcerpt;
+import ai.play.devtech.core.hooks.ListHook;
 
 public class AllianceLeaveHook extends ListHook<NationExcerpt> {
 

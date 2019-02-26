@@ -1,16 +1,16 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
 import java.util.Date;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.api.enums.Colors;
-import main.java.ai.play.devtech.core.api.enums.Continents;
-import main.java.ai.play.devtech.core.api.enums.DomesticPolicies;
-import main.java.ai.play.devtech.core.api.enums.EconomicPolicies;
-import main.java.ai.play.devtech.core.api.enums.Season;
-import main.java.ai.play.devtech.core.api.enums.SocialPolicies;
-import main.java.ai.play.devtech.core.api.enums.WarPolicies;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.Colors;
+import ai.play.devtech.core.api.enums.Continents;
+import ai.play.devtech.core.api.enums.DomesticPolicies;
+import ai.play.devtech.core.api.enums.EconomicPolicies;
+import ai.play.devtech.core.api.enums.Season;
+import ai.play.devtech.core.api.enums.SocialPolicies;
+import ai.play.devtech.core.api.enums.WarPolicies;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class Nation extends APIObject {
 	private static final long serialVersionUID = 1L;

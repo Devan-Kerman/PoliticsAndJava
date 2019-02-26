@@ -1,11 +1,11 @@
-package main.java.ai.play.devtech.core.api.objects.tradeprice;
+package ai.play.devtech.core.api.objects.tradeprice;
 
 import java.util.Date;
 
 import com.google.common.base.MoreObjects;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class LowestBuy extends APIObject {
 	private static final long serialVersionUID = 1L;

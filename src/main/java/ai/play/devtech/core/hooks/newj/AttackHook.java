@@ -1,9 +1,9 @@
-package main.java.ai.play.devtech.core.hooks.newj;
+package ai.play.devtech.core.hooks.newj;
 
-import main.java.ai.play.devtech.core.api.APIAggregator;
-import main.java.ai.play.devtech.core.api.objects.WarAttack;
-import main.java.ai.play.devtech.core.api.queries.WarAttacksQuery;
-import main.java.ai.play.devtech.core.hooks.ArrayHook;
+import ai.play.devtech.core.api.APIAggregator;
+import ai.play.devtech.core.api.objects.WarAttack;
+import ai.play.devtech.core.api.queries.WarAttacksQuery;
+import ai.play.devtech.core.hooks.ArrayHook;
 
 /**
  * Will try to automatically kill itself if the war ends by running the provided "killme" runnable

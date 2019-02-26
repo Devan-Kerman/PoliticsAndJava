@@ -1,8 +1,8 @@
-package main.java.ai.play.devtech.core.web.objects;
+package ai.play.devtech.core.web.objects;
 
 import java.util.Date;
 
-import main.java.ai.play.devtech.APIObject;
+import ai.play.devtech.APIObject;
 
 public class BankTransaction {
 

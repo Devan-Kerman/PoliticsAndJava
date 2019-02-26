@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.objects.lists;
+package ai.play.devtech.core.objects.lists;
 
 import java.lang.reflect.Array;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.web;
+package ai.play.devtech.core.web;
 
 import java.io.IOException;
 import java.time.Instant;

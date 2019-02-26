@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.util.strings;
+package ai.play.devtech.util.strings;
 
 import java.io.StringWriter;
 

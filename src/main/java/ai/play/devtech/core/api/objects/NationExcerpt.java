@@ -1,10 +1,10 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
 import java.awt.Color;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.api.enums.Colors;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.Colors;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 public class NationExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;

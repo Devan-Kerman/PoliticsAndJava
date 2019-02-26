@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech;
+package ai.play.devtech;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;

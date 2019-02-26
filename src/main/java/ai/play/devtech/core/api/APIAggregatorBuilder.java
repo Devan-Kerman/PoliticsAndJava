@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.api;
+package ai.play.devtech.core.api;
 
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class APIAggregatorBuilder {
 	}
 	
 	public APIAggregator build() {
-		APIAggregator agg = new APIAggregator();
+		APIAggregator agg = new APIAggregator("");
 		agg.cache = new APICache((int)data.get("size"), (Period)data.get("time"));
 		agg.key = (String)data.get("key");
 		return agg;

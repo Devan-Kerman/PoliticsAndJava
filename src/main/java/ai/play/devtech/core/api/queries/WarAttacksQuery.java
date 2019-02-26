@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.api.queries;
+package ai.play.devtech.core.api.queries;
 
 import java.util.HashMap;
 import java.util.Map;

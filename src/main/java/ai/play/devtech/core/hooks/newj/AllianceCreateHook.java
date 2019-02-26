@@ -1,8 +1,8 @@
-package main.java.ai.play.devtech.core.hooks.newj;
+package ai.play.devtech.core.hooks.newj;
 
-import main.java.ai.play.devtech.core.api.APIAggregator;
-import main.java.ai.play.devtech.core.api.objects.AllianceExcerpt;
-import main.java.ai.play.devtech.core.hooks.ArrayHook;
+import ai.play.devtech.core.api.APIAggregator;
+import ai.play.devtech.core.api.objects.AllianceExcerpt;
+import ai.play.devtech.core.hooks.ArrayHook;
 
 /**
  * This class will trigger all of it's listeners when a new alliance is created

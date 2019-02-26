@@ -1,4 +1,4 @@
-package main.java.ai.play.devtech.core.api.enums;
+package ai.play.devtech.core.api.enums;
 
 public enum TradeOfferType {
 	BUY, SELL;

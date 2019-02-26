@@ -1,7 +1,7 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * The object in the Cities API

@@ -1,8 +1,8 @@
-package main.java.ai.play.devtech.core.hooks.newj;
+package ai.play.devtech.core.hooks.newj;
 
-import main.java.ai.play.devtech.core.api.APIAggregator;
-import main.java.ai.play.devtech.core.api.objects.NationExcerpt;
-import main.java.ai.play.devtech.core.hooks.ArrayHook;
+import ai.play.devtech.core.api.APIAggregator;
+import ai.play.devtech.core.api.objects.NationExcerpt;
+import ai.play.devtech.core.hooks.ArrayHook;
 
 /**
  * An instance of this class will trigger all of it's listeners when a new nation joins the game, make sure to put this in a thread/timer of your choice

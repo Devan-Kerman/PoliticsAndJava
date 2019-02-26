@@ -1,11 +1,11 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
 
 import org.beryx.awt.color.ColorFactory;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.api.enums.Colors;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.Colors;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * This is the api object representing an alliance

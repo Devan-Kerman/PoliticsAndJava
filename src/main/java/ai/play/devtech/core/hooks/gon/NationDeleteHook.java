@@ -1,8 +1,8 @@
-package main.java.ai.play.devtech.core.hooks.gon;
+package ai.play.devtech.core.hooks.gon;
 
-import main.java.ai.play.devtech.core.api.APIAggregator;
-import main.java.ai.play.devtech.core.api.objects.NationExcerpt;
-import main.java.ai.play.devtech.core.hooks.ArrayHook;
+import ai.play.devtech.core.api.APIAggregator;
+import ai.play.devtech.core.api.objects.NationExcerpt;
+import ai.play.devtech.core.hooks.ArrayHook;
 
 public class NationDeleteHook extends ArrayHook<NationExcerpt> {
 

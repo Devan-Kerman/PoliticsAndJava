@@ -1,6 +1,6 @@
-package main.java.ai.play.devtech.core.api.queries;
+package ai.play.devtech.core.api.queries;
 
-import main.java.ai.play.devtech.core.api.enums.Resource;
+import ai.play.devtech.core.api.enums.Resource;
 
 public class TradeHistoryQuery {
 	int records = 1000;

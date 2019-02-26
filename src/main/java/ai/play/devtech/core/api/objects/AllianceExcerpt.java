@@ -1,13 +1,13 @@
-package main.java.ai.play.devtech.core.api.objects;
+package ai.play.devtech.core.api.objects;
 
 import java.util.Date;
 
 import org.beryx.awt.color.ColorFactory;
 
-import main.java.ai.play.devtech.APIObject;
-import main.java.ai.play.devtech.core.api.enums.Colors;
-import main.java.ai.play.devtech.core.api.enums.Continents;
-import main.java.ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.Colors;
+import ai.play.devtech.core.api.enums.Continents;
+import ai.play.devtech.core.objects.manipulation.JSONName;
 
 /**
  * The object in the Alliances API
