@@ -52,23 +52,21 @@ public class ArrayHook<T> extends TimerTask implements Runnable {
 	@Override
 	public void run() {
 		T[] newdata = agg.get();
-		System.out.printf("New players: %d - %d = %d\n", newdata.length, old.length, newdata.length - old.length);
-		if (reverse) {
+		if (reverse)
 			outer: for (T t : old) {
 				for (T c : newdata)
 					if (equals.test(t, c))
 						continue outer;
 				listeners.forEach((k, v) -> v.accept(t));
 			}
-		} else {
+		else
 			outer: for (T t : newdata) {
 				for (T c : old)
 					if (equals.test(t, c))
 						continue outer;
 				listeners.forEach((k, v) -> v.accept(t));
 			}
-		}
-		
+
 		old = newdata;
 		if (escape != null)
 			escape.run();

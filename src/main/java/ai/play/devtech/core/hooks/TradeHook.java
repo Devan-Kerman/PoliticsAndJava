@@ -1,8 +1,7 @@
-package ai.play.devtech.core.hooks.constant;
+package ai.play.devtech.core.hooks;
 
 import ai.play.devtech.core.api.APIAggregator;
 import ai.play.devtech.core.api.objects.tradeprice.TradePrice;
-import ai.play.devtech.core.hooks.VarietyHook;
 
 public class TradeHook extends VarietyHook<TradePrice> {
 

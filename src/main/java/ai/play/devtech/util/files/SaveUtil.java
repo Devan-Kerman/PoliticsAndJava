@@ -9,9 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 
+import ai.play.devtech.util.logic.ExceptionWrapper;
 import ai.play.devtech.util.strings.Rand;
 
 public class SaveUtil {
@@ -23,23 +22,31 @@ public class SaveUtil {
 	public static void open(BufferedReader r, String type) throws IOException {
 		File f = File.createTempFile(Rand.randEng(10), type);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(f));
-		forStream(r.lines(), t -> {
-			try {writer.append(t);} catch (IOException e) {e.printStackTrace();}
-		});
+		new ExceptionWrapper<Void>(() -> r.lines().forEach(s -> new ExceptionWrapper<Void>(() -> writer.append(s)).run())).run();
 		writer.close();
 		Desktop.getDesktop().open(f);
 	}
 	
+	/**
+	 * Auto buffers the reader and calls {@link SaveUtil#open(BufferedReader, String)}
+	 * @param r
+	 * @param type
+	 * @throws IOException
+	 */
 	public static void open(Reader r, String type) throws IOException {
 		open(new BufferedReader(r), type);
 	}
 	
+	/**
+	 * Same thing as {@link SaveUtil#open(Reader, String)} but first wraps it in a {@link InputStreamReader}
+	 * @param i
+	 * @param type
+	 * @throws IOException
+	 */
 	public static void open(InputStream i, String type) throws IOException {
 		open(new InputStreamReader(i), type);
 	}
 	
-	static <T> void forStream(Stream<T> s, Consumer<T> in) {
-		s.forEach(in);
-	}
+	
 
 }

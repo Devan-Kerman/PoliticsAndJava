@@ -4,7 +4,6 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.objects.manipulation.JSONName;
-import ai.play.devtech.util.math.CastMath;
 
 public class War extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -71,7 +70,7 @@ public class War extends APIObject {
 
 	@Override
 	public long getID() {
-		return CastMath.twoIntsToLong(aggID, defID);
+		return (long)aggID << 32 | defID & 0xFFFFFFFFL;
 	}
 
 }

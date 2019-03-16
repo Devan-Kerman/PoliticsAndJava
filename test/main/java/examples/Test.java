@@ -3,7 +3,7 @@ package examples;
 import java.time.temporal.ChronoUnit;
 
 import ai.play.devtech.core.api.APIAggregator;
-import ai.play.devtech.core.hooks.newj.GameJoinHook;
+import ai.play.devtech.core.hooks.GameJoinHook;
 
 public class Test {
 	public static void main(String[] args) {

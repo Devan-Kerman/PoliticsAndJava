@@ -1,9 +1,8 @@
-package ai.play.devtech.core.hooks.newj;
+package ai.play.devtech.core.hooks;
 
 import ai.play.devtech.core.api.APIAggregator;
 import ai.play.devtech.core.api.objects.WarAttack;
 import ai.play.devtech.core.api.queries.WarAttacksQuery;
-import ai.play.devtech.core.hooks.ArrayHook;
 
 /**
  * Will try to automatically kill itself if the war ends by running the provided "killme" runnable
@@ -25,7 +24,7 @@ public class AttackHook extends ArrayHook<WarAttack> {
 			if(agg.getWar(attacks[0].warId).warEnded)
 				killme.run();
 			return attacks;
-		}, (w1, w2) -> w1.warId == w2.warId, false);
+		}, (w1, w2) -> w1.warId == w2.warId, true);
 	}
 	
 }
