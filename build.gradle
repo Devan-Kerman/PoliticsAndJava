@@ -18,7 +18,7 @@ repositories {
 }
 
 
-dependencies {
+dependencies { 
     testCompile 'junit:junit:4.12'
     
     implementation 'com.google.guava:guava:27.0.1-jre'
