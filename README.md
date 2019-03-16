@@ -16,4 +16,8 @@ A Simple Politics and War API wrapper for Java<br/>
       - This type correction layer does add a noticable delay, but your actual code will end up running faster, for example, string comparison is much slower than floats and enums.
   #### 5. Diverse - will probably copy paste some parts of my old wrapper into this one, such as webscraping and other utilities.<br/>
   #### 6. Easy to use - throwing somewhat usefull exceptions, well, that's what it attempts atleast.<br/>
-
+## This library also includes tons and tons of other epic utilities
+    - Message automation
+    - Other web automations
+    - Web scraping
+    - Hooks
