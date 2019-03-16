@@ -4,62 +4,62 @@ import java.awt.Color;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class NationExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "nationid")
+	@DataName(name = "nationid")
 	public int nationid;
 	
-	@JSONName(name = "nation")
+	@DataName(name = "nation")
 	public String name;
 	
-	@JSONName(name = "leader")
+	@DataName(name = "leader")
 	public String leader;
 	
-	@JSONName(name = "continent")
+	@DataName(name = "continent")
 	public String continent;
 	
-	@JSONName(name = "war_policy")
+	@DataName(name = "war_policy")
 	public String war;
 	
-	@JSONName(name = "color")
+	@DataName(name = "color")
 	public Colors color;
 	
 	public Color rgb;
 	
-	@JSONName(name = "alliance")
+	@DataName(name = "alliance")
 	public String allaince;
 	
-	@JSONName(name = "allianceid")
+	@DataName(name = "allianceid")
 	public int aaid;
 	
-	@JSONName(name = "allianceposition")
+	@DataName(name = "allianceposition")
 	public byte aarank;
 	
-	@JSONName(name = "cities")
+	@DataName(name = "cities")
 	public byte cities;
 	
-	@JSONName(name = "infrastructure")
+	@DataName(name = "infrastructure")
 	public float infra;
 	
-	@JSONName(name = "offensivewars")
+	@DataName(name = "offensivewars")
 	public byte offwars;
 	
-	@JSONName(name = "defensivewars")
+	@DataName(name = "defensivewars")
 	public byte defwars;
 	
-	@JSONName(name = "score")
+	@DataName(name = "score")
 	public float score;
 	
-	@JSONName(name = "rank")
+	@DataName(name = "rank")
 	public int rank;
 	
-	@JSONName(name = "vacmode")
+	@DataName(name = "vacmode")
 	public int vacturns;
 	
-	@JSONName(name = "minutessinceactive")
+	@DataName(name = "minutessinceactive")
 	public long mininactive;
 
 	@Override

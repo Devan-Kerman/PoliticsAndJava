@@ -10,243 +10,243 @@ import ai.play.devtech.core.api.enums.EconomicPolicies;
 import ai.play.devtech.core.api.enums.Season;
 import ai.play.devtech.core.api.enums.SocialPolicies;
 import ai.play.devtech.core.api.enums.WarPolicies;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class Nation extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "cityids")
+	@DataName(name = "cityids")
 	public int[] cityids;
 	
-	@JSONName(name = "cityprojecttimerturns")
+	@DataName(name = "cityprojecttimerturns")
 	public byte citytimer;
 	
-	@JSONName(name = "nationid")
+	@DataName(name = "nationid")
 	public int nationid;
 	
-	@JSONName(name = "name")
+	@DataName(name = "name")
 	public String name;
 	
-	@JSONName(name = "prename")
+	@DataName(name = "prename")
 	public String prename;
 	
-	@JSONName(name = "continent")
+	@DataName(name = "continent")
 	public Continents continent;
 	
-	@JSONName(name = "socialpolicy")
+	@DataName(name = "socialpolicy")
 	public SocialPolicies social;
 	
-	@JSONName(name = "color")
+	@DataName(name = "color")
 	public Colors color;
 	
-	@JSONName(name = "minutessinceactive")
+	@DataName(name = "minutessinceactive")
 	public long mininactive;
 	
-	@JSONName(name = "uniqueid")
+	@DataName(name = "uniqueid")
 	public String uuid;
 	
-	@JSONName(name = "government")
+	@DataName(name = "government")
 	public String gov;
 	
-	@JSONName(name = "domestic_policy")
+	@DataName(name = "domestic_policy")
 	public DomesticPolicies domestic;
 	
-	@JSONName(name = "war_policy")
+	@DataName(name = "war_policy")
 	public WarPolicies war;
 	
-	@JSONName(name = "founded")
+	@DataName(name = "founded")
 	public Date founded;
 	
 	/**
 	 * This is the age in days
 	 */
-	@JSONName(name = "daysold")
+	@DataName(name = "daysold")
 	public int age;
 	
-	@JSONName(name = "alliance")
+	@DataName(name = "alliance")
 	public String alliance;
 	
-	@JSONName(name = "allianceposition")
+	@DataName(name = "allianceposition")
 	public int aarank;
 	
-	@JSONName(name = "allianceid")
+	@DataName(name = "allianceid")
 	public int aaid;
 	
-	@JSONName(name = "flagurl")
+	@DataName(name = "flagurl")
 	public String flag;
 	
-	@JSONName(name = "leadername")
+	@DataName(name = "leadername")
 	public String leader;
 	
-	@JSONName(name = "title")
+	@DataName(name = "title")
 	public String title;
 	
-	@JSONName(name = "ecopolicy")
+	@DataName(name = "ecopolicy")
 	public EconomicPolicies econ;
 	
-	@JSONName(name = "approvalrating")
+	@DataName(name = "approvalrating")
 	public float approval;
 	
-	@JSONName(name = "nationrank")
+	@DataName(name = "nationrank")
 	public short rank;
 	
-	@JSONName(name = "nationrankstrings")
+	@DataName(name = "nationrankstrings")
 	public String rankstrn;
 	
-	@JSONName(name = "nrtotal")
+	@DataName(name = "nrtotal")
 	public float nrtotal;
 	
-	@JSONName(name = "cities")
+	@DataName(name = "cities")
 	public byte cities;
 	
-	@JSONName(name = "latitude")
+	@DataName(name = "latitude")
 	public float latitude;
 	
-	@JSONName(name = "longitude")
+	@DataName(name = "longitude")
 	public float longitude;
 	
-	@JSONName(name = "score")
+	@DataName(name = "score")
 	public double score;
 	
-	@JSONName(name = "population")
+	@DataName(name = "population")
 	public long pop;
 	
-	@JSONName(name = "gdp")
+	@DataName(name = "gdp")
 	public double gdp;
 	
-	@JSONName(name = "totalinfrastructure")
+	@DataName(name = "totalinfrastructure")
 	public double totalinfra;
 	
-	@JSONName(name = "landarea")
+	@DataName(name = "landarea")
 	public double totalland;
 	
-	@JSONName(name = "soldiers")
+	@DataName(name = "soldiers")
 	public int soldiers;
 	
-	@JSONName(name = "soldiercasualties")
+	@DataName(name = "soldiercasualties")
 	public int soldiersded;
 	
-	@JSONName(name = "soldierskilled")
+	@DataName(name = "soldierskilled")
 	public int soldierskilled;
 	
-	@JSONName(name = "tanks")
+	@DataName(name = "tanks")
 	public int tanks;
 	
-	@JSONName(name = "tankcasualties")
+	@DataName(name = "tankcasualties")
 	public int tanksded;
 	
-	@JSONName(name = "tankskilled")
+	@DataName(name = "tankskilled")
 	public int tankskilled;
 	
-	@JSONName(name = "aircraft")
+	@DataName(name = "aircraft")
 	public int planes;
 	
-	@JSONName(name = "aircraftcasualties")
+	@DataName(name = "aircraftcasualties")
 	public int planesded;
 	
-	@JSONName(name = "aircraftkilled")
+	@DataName(name = "aircraftkilled")
 	public int planeskilled;
 	
-	@JSONName(name = "ships")
+	@DataName(name = "ships")
 	public int ships;
 	
-	@JSONName(name = "shipcasualties")
+	@DataName(name = "shipcasualties")
 	public int shipsded;
 	
-	@JSONName(name = "shipskilled")
+	@DataName(name = "shipskilled")
 	public int shipskilled;
 	
-	@JSONName(name = "missiles")
+	@DataName(name = "missiles")
 	public int missles;
 	
-	@JSONName(name = "missilelaunched")
+	@DataName(name = "missilelaunched")
 	public int misslaunched;
 	
-	@JSONName(name = "missileseaten")
+	@DataName(name = "missileseaten")
 	public int misseaten;
 	
-	@JSONName(name = "nukes")
+	@DataName(name = "nukes")
 	public int nukes;
 	
-	@JSONName(name = "nukeslaunched")
+	@DataName(name = "nukeslaunched")
 	public int nukeslaunched;
 	
-	@JSONName(name = "nukeseaten")
+	@DataName(name = "nukeseaten")
 	public int nukeseaten;
 	
-	@JSONName(name = "infdesttot")
+	@DataName(name = "infdesttot")
 	public double infrakilled;
 	
-	@JSONName(name = "infraLost")
+	@DataName(name = "infraLost")
 	public double infraded;
 	
-	@JSONName(name = "moneyLooted")
+	@DataName(name = "moneyLooted")
 	public double moneylooted;
 	
-	@JSONName(name = "ironworks")
+	@DataName(name = "ironworks")
 	public boolean ironworks;
 	
-	@JSONName(name = "bauxiteworks")
+	@DataName(name = "bauxiteworks")
 	public boolean bauxworks;
 	
-	@JSONName(name = "armsstockpile")
+	@DataName(name = "armsstockpile")
 	public boolean armsstock;
 	
-	@JSONName(name = "emgasreserve")
+	@DataName(name = "emgasreserve")
 	public boolean gasoreserve;
 	
-	@JSONName(name = "massirrigation")
+	@DataName(name = "massirrigation")
 	public boolean irrigation;
 	
-	@JSONName(name = "inttradecenter")
+	@DataName(name = "inttradecenter")
 	public boolean tradecenter;
 	
-	@JSONName(name = "missilelpad")
+	@DataName(name = "missilelpad")
 	public boolean misslepad;
 	
-	@JSONName(name = "nuclearresfac")
+	@DataName(name = "nuclearresfac")
 	public boolean nukepad;
 	
-	@JSONName(name = "irondome")
+	@DataName(name = "irondome")
 	public boolean irondome;
 	
-	@JSONName(name = "vitaldefsys")
+	@DataName(name = "vitaldefsys")
 	public boolean vitaldef;
 	
-	@JSONName(name = "intagncy")
+	@DataName(name = "intagncy")
 	public boolean intelagency;
 	
-	@JSONName(name = "uraniumenrich")
+	@DataName(name = "uraniumenrich")
 	public boolean uranrich;
 	
-	@JSONName(name = "propbureau")
+	@DataName(name = "propbureau")
 	public boolean propbureau;
 	
-	@JSONName(name = "cenciveng")
+	@DataName(name = "cenciveng")
 	public boolean engineer;
 	
-	@JSONName(name = "vmode") 
+	@DataName(name = "vmode") 
 	public int vmturns;
 	
-	@JSONName(name = "offensivewars") 
+	@DataName(name = "offensivewars") 
 	public byte offwars;
 	
-	@JSONName(name = "defensivewars")
+	@DataName(name = "defensivewars")
 	public byte defwars;
 	
-	@JSONName(name = "offensivewar_ids")
+	@DataName(name = "offensivewar_ids")
 	public int[] offwarids;
 	
-	@JSONName(name = "defensivewar_ids")
+	@DataName(name = "defensivewar_ids")
 	public int[] defwarids;
 	
-	@JSONName(name = "beige_turns_left")
+	@DataName(name = "beige_turns_left")
 	public short beigeturns;
 	
-	@JSONName(name = "radiation_index")
+	@DataName(name = "radiation_index")
 	public float radiation;
 	
-	@JSONName(name = "season")
+	@DataName(name = "season")
 	public Season season;
 
 	public long getID() {

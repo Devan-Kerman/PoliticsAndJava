@@ -4,7 +4,7 @@ package ai.play.devtech.core.api.objects;
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
 import ai.play.devtech.core.api.enums.WarPolicies;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 /**
  * An object represented in the Alliance Member api
@@ -14,154 +14,154 @@ import ai.play.devtech.core.objects.manipulation.JSONName;
 public class AllianceMember extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "nationid")
+	@DataName(name = "nationid")
 	public int nationid;
 	
-	@JSONName(name = "nation")
+	@DataName(name = "nation")
 	public String nation;
 	
-	@JSONName(name = "leader")
+	@DataName(name = "leader")
 	public String leader;
 	
-	@JSONName(name = "war_policy")
+	@DataName(name = "war_policy")
 	public WarPolicies war;
 	
-	@JSONName(name = "color")
+	@DataName(name = "color")
 	public Colors color;
 	
-	@JSONName(name = "alliance")
+	@DataName(name = "alliance")
 	public String alliance;
 	
-	@JSONName(name = "allianceid")
+	@DataName(name = "allianceid")
 	public short allianceid;
 	
-	@JSONName(name = "allianceposition")
+	@DataName(name = "allianceposition")
 	public byte alliancerank;
 	
-	@JSONName(name = "cities")
+	@DataName(name = "cities")
 	public short cities;
 	
-	@JSONName(name = "offensivewars")
+	@DataName(name = "offensivewars")
 	public byte offWars;
 	
-	@JSONName(name = "defensivewars")
+	@DataName(name = "defensivewars")
 	public byte defWars;
 	
-	@JSONName(name = "score")
+	@DataName(name = "score")
 	public float score;
 	
-	@JSONName(name = "vacmode")
+	@DataName(name = "vacmode")
 	public int vacturns;
 	
-	@JSONName(name = "minutessinceactive")
+	@DataName(name = "minutessinceactive")
 	public long inactivity; // In minuets
 	
-	@JSONName(name = "infrastructure")
+	@DataName(name = "infrastructure")
 	public double infra;
 	
-	@JSONName(name = "cityprojecttimerturns")
+	@DataName(name = "cityprojecttimerturns")
 	public byte cityturns;
 	
-	@JSONName(name = "bauxiteworks")
+	@DataName(name = "bauxiteworks")
 	public boolean bauxworks;
 	
-	@JSONName(name = "ironworks")
+	@DataName(name = "ironworks")
 	public boolean ironworks;
 	
-	@JSONName(name = "armsstockpile")
+	@DataName(name = "armsstockpile")
 	public boolean stockpile;
 	
-	@JSONName(name = "emgasreserve")
+	@DataName(name = "emgasreserve")
 	public boolean gasreserve;
 	
-	@JSONName(name = "massirrigation")
+	@DataName(name = "massirrigation")
 	public boolean irrigation;
 	
-	@JSONName(name = "inttradecenter")
+	@DataName(name = "inttradecenter")
 	public boolean tradecenter;
 	
-	@JSONName(name = "missilepad")
+	@DataName(name = "missilepad")
 	public boolean missilepad;
 	
-	@JSONName(name = "nuclearresfac")
+	@DataName(name = "nuclearresfac")
 	public boolean nukeproj;
 	
-	@JSONName(name = "irondome")
+	@DataName(name = "irondome")
 	public boolean irondome;
 	
-	@JSONName(name = "vitaldefsys")
+	@DataName(name = "vitaldefsys")
 	public boolean vitaldefense;
 	
-	@JSONName(name = "intagncy")
+	@DataName(name = "intagncy")
 	public boolean spyProject;
 	
-	@JSONName(name = "uraniumenrich")
+	@DataName(name = "uraniumenrich")
 	public boolean uranrich;
 	
-	@JSONName(name = "propbureau")
+	@DataName(name = "propbureau")
 	public boolean propbureau;
 	
-	@JSONName(name = "cenciveng")
+	@DataName(name = "cenciveng")
 	public boolean engineering;
 	
-	@JSONName(name = "money")
+	@DataName(name = "money")
 	public double money;
 	
-	@JSONName(name = "food")
+	@DataName(name = "food")
 	public double food;
 	
-	@JSONName(name = "coal")
+	@DataName(name = "coal")
 	public double coal;
 	
-	@JSONName(name = "oil")
+	@DataName(name = "oil")
 	public double oil;
 	
-	@JSONName(name = "uranium")
+	@DataName(name = "uranium")
 	public double uran;
 	
-	@JSONName(name = "bauxite")
+	@DataName(name = "bauxite")
 	public double baux;
 	
-	@JSONName(name = "iron")
+	@DataName(name = "iron")
 	public double iron;
 	
-	@JSONName(name = "lead")
+	@DataName(name = "lead")
 	public double lead;
 	
-	@JSONName(name = "gasoline")
+	@DataName(name = "gasoline")
 	public double gaso;
 	
-	@JSONName(name = "munitions")
+	@DataName(name = "munitions")
 	public double munit;
 	
-	@JSONName(name = "aluminum")
+	@DataName(name = "aluminum")
 	public double alum;
 	
-	@JSONName(name = "steel")
+	@DataName(name = "steel")
 	public double steel;
 	
-	@JSONName(name = "credits")
+	@DataName(name = "credits")
 	public int creds;
 	
-	@JSONName(name = "soldiers")
+	@DataName(name = "soldiers")
 	public long soldiers;
 	
-	@JSONName(name = "tanks")
+	@DataName(name = "tanks")
 	public int tanks;
 	
-	@JSONName(name = "aircraft")
+	@DataName(name = "aircraft")
 	public int aircraft;
 	
-	@JSONName(name = "ships")
+	@DataName(name = "ships")
 	public short ships;
 	
-	@JSONName(name = "missiles")
+	@DataName(name = "missiles")
 	public short missiles;
 	
-	@JSONName(name = "nukes")
+	@DataName(name = "nukes")
 	public short nukes;
 	
-	@JSONName(name = "spies")
+	@DataName(name = "spies")
 	public byte spies;
 
 	@Override

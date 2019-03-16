@@ -7,7 +7,7 @@ import org.beryx.awt.color.ColorFactory;
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
 import ai.play.devtech.core.api.enums.Continents;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 /**
  * The object in the Alliances API
@@ -20,70 +20,70 @@ public class AllianceExcerpt extends APIObject {
 	/**
 	 * Alliance id
 	 */
-	@JSONName(name = "id")
+	@DataName(name = "id")
 	public short aaid;
 	
 	/**
 	 * The day they were created
 	 */
-	@JSONName(name = "founddate")
+	@DataName(name = "founddate")
 	public Date founded;
 	
 	/**
 	 * Alliance name
 	 */
-	@JSONName(name = "name")
+	@DataName(name = "name")
 	public String name;
 	
 	/**
 	 * Alliance acronym
 	 */
-	@JSONName(name = "acronym")
+	@DataName(name = "acronym")
 	public String acro;
 	
 	/**
 	 * Color of the alliance (enum form) use {@link ColorFactory#valueOf(String)} in order to obtain java color object
 	 */
-	@JSONName(name = "color")
+	@DataName(name = "color")
 	public Colors color;
 	
 	/**
 	 * The current continent that the nation is on
 	 */
-	@JSONName(name = "continent")
+	@DataName(name = "continent")
 	public Continents continent;
 	
 	/**
 	 * The alliances rank
 	 */
-	@JSONName(name = "rank")
+	@DataName(name = "rank")
 	public short rank;
 	
-	@JSONName(name = "members")
+	@DataName(name = "members")
 	public short members;
 	
-	@JSONName(name = "score")
+	@DataName(name = "score")
 	public double score;
 	
-	@JSONName(name = "leaderids")
+	@DataName(name = "leaderids")
 	public int[] lids;
 	
-	@JSONName(name = "officerids")
+	@DataName(name = "officerids")
 	public int[] oids;
 	
-	@JSONName(name = "heirids")
+	@DataName(name = "heirids")
 	public int[] hids;
 	
-	@JSONName(name = "avgscore")
+	@DataName(name = "avgscore")
 	public float avgscore;
 	
-	@JSONName(name = "flagurl")
+	@DataName(name = "flagurl")
 	public String flagurl;
 	
-	@JSONName(name = "forumurl")
+	@DataName(name = "forumurl")
 	public String forum;
 	
-	@JSONName(name = "ircchan")
+	@DataName(name = "ircchan")
 	public String irc;
 
 	@Override

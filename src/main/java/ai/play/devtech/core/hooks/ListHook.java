@@ -48,9 +48,9 @@ public class ListHook<T> extends TimerTask implements Runnable {
 		List<T> newdata = agg.get();
 		List<T> dif = new LinkedList<>();
 		if (reverse)
-			newdata.stream().filter(i -> pC(old, i)).forEach(dif::add);
-		else
 			old.stream().filter(i -> pC(newdata, i)).forEach(dif::add);
+		else
+			newdata.stream().filter(i -> pC(old, i)).forEach(dif::add);
 		old = newdata;
 		dif.forEach(t -> listeners.forEach((k, v) -> v.accept(t)));
 		if(escape != null)

@@ -17,6 +17,7 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     testCompile 'junit:junit:4.12'
     
@@ -37,6 +38,4 @@ dependencies {
 	implementation 'org.cache2k:cache2k-core:1.2.0.Final'
   	
 	compile "org.jooq:joor-java-8:0.9.8"
-  	
-  	
 }

@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.sql.Date;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,15 +22,17 @@ public class ObjectBuilder<T> {
 	
 	public ObjectBuilder(Class<T> type) {
 		this.type = type;
-		psudoobj = new PsudObj<>();
+		psudoobj = new HashMap<>();
 	}
 	
-	public void add(String varname, Object value) {
+	public ObjectBuilder<T> add(String varname, Object value) {
 		psudoobj.put(varname, value);
+		return this;
 	}
 	
-	public void addAll(Map<String, Object> map) {
+	public ObjectBuilder<T> addAll(Map<String, Object> map) {
 		map.forEach((s, o) -> psudoobj.put(s, o));
+		return this;
 	}
 	
 	
@@ -54,7 +57,7 @@ public class ObjectBuilder<T> {
 			Field[] des = type.getFields();
 			K k = type.newInstance();
 			for(Field f : des) {
-				JSONName anno = f.getAnnotation(JSONName.class);
+				DataName anno = f.getAnnotation(DataName.class);
 				if(anno==null)
 					f.set(k, deepCorrect(obj.get(f.getName()), f.getType()));
 				else
@@ -74,13 +77,14 @@ public class ObjectBuilder<T> {
 	private boolean isSimple(Object o) {
 		return o instanceof Number || o instanceof String || o instanceof Character || o instanceof Boolean;
 	}
-	public static final DateTimeFormatter dtf1 = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
-	public static final DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");
+	private static final DateTimeFormatter dtf1 = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+	private static final DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static Enum<?> getEnum(Class tckass, String in) {
 		return Enum.valueOf(tckass, in.toUpperCase().replace(' ', '_'));
 	}
+	
 	@SuppressWarnings("unchecked")
 	private <K> K correct(Object in, Class<K> outtype) {
 		if(in instanceof Optional<?> || in instanceof Optional)

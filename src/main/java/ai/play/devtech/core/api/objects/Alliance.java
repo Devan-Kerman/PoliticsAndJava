@@ -5,7 +5,7 @@ import org.beryx.awt.color.ColorFactory;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 /**
  * This is the api object representing an alliance
@@ -18,139 +18,139 @@ public class Alliance extends APIObject {
 	/**
 	 * Leader ids
 	 */
-	@JSONName(name = "leaderids")
+	@DataName(name = "leaderids")
 	public int[] lids;
 	
 	/**
 	 * Alliance id
 	 */
-	@JSONName(name = "allianceid")
+	@DataName(name = "allianceid")
 	public short aaid;
 	
 	/**
 	 * Alliance Name
 	 */
-	@JSONName(name = "name")
+	@DataName(name = "name")
 	public String name;
 	
 	/**
 	 * Alliance acronym
 	 */
-	@JSONName(name = "acronym")
+	@DataName(name = "acronym")
 	public String acronym;
 	
 	/**
 	 * Total alliance score
 	 */
-	@JSONName(name = "score")
+	@DataName(name = "score")
 	public float score;
 	
 	/**
 	 * Color of the alliance (enum form) use {@link ColorFactory#valueOf(String)} in order to obtain java color object
 	 */
-	@JSONName(name = "color")
+	@DataName(name = "color")
 	public Colors color;
 	
 	/**
 	 * The alliances total member count
 	 */
-	@JSONName(name = "members")
+	@DataName(name = "members")
 	public short members;
 	
 	/**
 	 * All of the members in the alliance
 	 */
-	@JSONName(name = "member_id_list")
+	@DataName(name = "member_id_list")
 	public int[] memberids;
 	
 	/**
 	 * Number of members in vacation mode
 	 */
-	@JSONName(name = "vmodemembers")
+	@DataName(name = "vmodemembers")
 	public short vccount;
 	
 	/**
 	 * Whether or not the alliance is accepting members
 	 */
-	@JSONName(name = "accepting members")
+	@DataName(name = "accepting members")
 	public boolean accepting;
 	
 	/**
 	 * The number of applicants this alliance currently has
 	 */
-	@JSONName(name = "applicants")
+	@DataName(name = "applicants")
 	public byte applicants;
 	
 	/**
 	 * The image url of this alliances flag
 	 */
-	@JSONName(name = "flagurl")
+	@DataName(name = "flagurl")
 	public String flag;
 	
 	/**
 	 * Forum
 	 */
-	@JSONName(name = "forumurl")
+	@DataName(name = "forumurl")
 	public String forum;
 	
 	/**
 	 * Discord or sum ghetto irc (what is this, 2012?)
 	 */
-	@JSONName(name = "irc")
+	@DataName(name = "irc")
 	public String irc;
 	
 	/**
 	 * Alliance GDP
 	 */
-	@JSONName(name = "gdp")
+	@DataName(name = "gdp")
 	public double gdp;
 	
 	/**
 	 * The total amount of cities an alliance has
 	 */
-	@JSONName(name = "cities")
+	@DataName(name = "cities")
 	public short cities;
 	
 	/**
 	 * Total amount of soldiers in alliance
 	 */
-	@JSONName(name = "soldiers")
+	@DataName(name = "soldiers")
 	public int soldiers;
 	
 	/**
 	 * Total amount of tanks in alliance
 	 */
-	@JSONName(name = "tanks")
+	@DataName(name = "tanks")
 	public int tanks;
 	
 	/**
 	 * Total amount of aircraft in alliance
 	 */
-	@JSONName(name = "aircraft")
+	@DataName(name = "aircraft")
 	public int aircraft;
 	
 	/**
 	 * Total amount of ship
 	 */
-	@JSONName(name = "ships")
+	@DataName(name = "ships")
 	public short ships;
 	
 	/**
 	 * Total amount of missiles
 	 */
-	@JSONName(name = "missiles")
+	@DataName(name = "missiles")
 	public short missles;
 	
 	/**
 	 * Total amount of nukes
 	 */
-	@JSONName(name = "nukes")
+	@DataName(name = "nukes")
 	public short nukes;
 	
 	/**
 	 * The number of treasures the alliance has
 	 */
-	@JSONName(name = "treasures")
+	@DataName(name = "treasures")
 	public byte treasures;
 
 	@Override

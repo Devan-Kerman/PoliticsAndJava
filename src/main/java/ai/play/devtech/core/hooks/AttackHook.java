@@ -24,7 +24,7 @@ public class AttackHook extends ArrayHook<WarAttack> {
 			if(agg.getWar(attacks[0].warId).warEnded)
 				killme.run();
 			return attacks;
-		}, (w1, w2) -> w1.warId == w2.warId, true);
+		}, (w1, w2) -> w1.warId == w2.warId, false);
 	}
 	
 }

@@ -5,33 +5,33 @@ import java.util.Date;
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Resource;
 import ai.play.devtech.core.api.enums.TradeOfferType;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class TradeHistory extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "cityids")
+	@DataName(name = "cityids")
 	public int[] cityids;
 	
-	@JSONName(name = "date")
+	@DataName(name = "date")
 	public Date date;
 	
-	@JSONName(name = "offerer_nation_id")
+	@DataName(name = "offerer_nation_id")
 	public int offeringnid;
 	
-	@JSONName(name = "accepter_nation_id")
+	@DataName(name = "accepter_nation_id")
 	public int acceptornid;
 	
-	@JSONName(name = "resource")
+	@DataName(name = "resource")
 	public Resource resource;
 	
-	@JSONName(name = "offer_type")
+	@DataName(name = "offer_type")
 	public TradeOfferType type;
 	
-	@JSONName(name = "quantity")
+	@DataName(name = "quantity")
 	public float quantity;
 	
-	@JSONName(name = "price")
+	@DataName(name = "price")
 	public float price;
 
 	@Override

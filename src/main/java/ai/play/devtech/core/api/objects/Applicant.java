@@ -1,27 +1,27 @@
 package ai.play.devtech.core.api.objects;
 
 import ai.play.devtech.APIObject;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class Applicant extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "nationid")
+	@DataName(name = "nationid")
 	public int nationid;
 
-	@JSONName(name = "nation")
+	@DataName(name = "nation")
 	public String nation;
 	
-	@JSONName(name = "leader")
+	@DataName(name = "leader")
 	public String leader;
 	
-	@JSONName(name = "continent")
+	@DataName(name = "continent")
 	public String continent;
 	
-	@JSONName(name = "cities")
+	@DataName(name = "cities")
 	public byte cities;
 	
-	@JSONName(name = "score")
+	@DataName(name = "score")
 	public float score;
 
 	@Override

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
@@ -14,7 +15,6 @@ import java.util.function.Function;
 
 import com.google.gson.Gson;
 
-import ai.play.devtech.core.api.Period;
 import ai.play.devtech.core.api.interfaces.APICache;
 import ai.play.devtech.core.api.misc.Entry;
 import ai.play.devtech.core.errors.InvalidAPIURLException;
@@ -29,30 +29,30 @@ import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
 public class SimpleAPICache implements APICache {
 
 	protected Map<String, Entry> datamap;
-	protected Period decay;
+	protected long msdecay;
 	protected static Gson gson = new Gson();
 	
 	protected Set<String> current = new ConcurrentSkipListSet<>();
 	
 	public SimpleAPICache() {
-		this(50, new Period(ChronoUnit.HOURS, 1));
+		this(50, Duration.of(1, ChronoUnit.HOURS));
 	}
 	
 	public SimpleAPICache(int initialsize) {
-		this(initialsize, new Period(ChronoUnit.HOURS, 1));
+		this(initialsize, Duration.of(1, ChronoUnit.HOURS));
 	}
 	
-	public SimpleAPICache(ChronoUnit time, int amount) {
-		this(50, new Period(time, amount));
+	public SimpleAPICache(ChronoUnit time, long amount) {
+		this(50, Duration.of(amount, time));
 	}
 	
-	public SimpleAPICache(ChronoUnit time, int amount, int initialsize) {
-		this(initialsize, new Period(time, amount));
+	public SimpleAPICache(ChronoUnit time, long amount, int initialsize) {
+		this(initialsize, Duration.of(amount, time));
 	}
 
-	public SimpleAPICache(int size, Period p) {
+	public SimpleAPICache(int size, Duration d) {
 		datamap = new ConcurrentHashMap<>(size);
-		decay = p;
+		msdecay = d.toMillis();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -85,7 +85,7 @@ public class SimpleAPICache implements APICache {
 		ObjectBuilder<T> obj = new ObjectBuilder<>(type);
 		obj.addAll(map);
 		T t = obj.build();
-		datamap.put(url, new Entry(t, Instant.now().plus(decay.time, decay.unit)));
+		datamap.put(url, new Entry(t, Instant.now().plusMillis(msdecay)));
 		current.remove(url);
 		return t;
 	}

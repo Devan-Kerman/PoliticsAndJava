@@ -11,7 +11,6 @@ public class ListUtils {
 		for(int x = 0; x < list.size(); x++)
 			Array.set(o, x, list.get(x));
 		return (T[])o;
-		
 	}
 
 }

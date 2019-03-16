@@ -2,24 +2,24 @@ package ai.play.devtech.core.api.objects.tradeprice;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Resource;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class TradePrice extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "resource")
+	@DataName(name = "resource")
 	public Resource resource;
 	
-	@JSONName(name = "avgprice")
+	@DataName(name = "avgprice")
 	public float avgprice;
 	
-	@JSONName(name = "marketindex")
+	@DataName(name = "marketindex")
 	public String marketindex;
 	
-	@JSONName(name = "highestbuy")
+	@DataName(name = "highestbuy")
 	public HighestBuy bestSell;
 	
-	@JSONName(name = "lowestbuy")
+	@DataName(name = "lowestbuy")
 	public LowestBuy bestBuy;
 
 	@Override

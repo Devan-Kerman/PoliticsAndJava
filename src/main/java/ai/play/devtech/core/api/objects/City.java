@@ -4,165 +4,165 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Continents;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class City extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "cityid")
+	@DataName(name = "cityid")
 	public int id;
 	
-	@JSONName(name = "url")
+	@DataName(name = "url")
 	public String url;
 	
-	@JSONName(name = "nationid")
+	@DataName(name = "nationid")
 	public String nationid;
 	
-	@JSONName(name = "name")
+	@DataName(name = "name")
 	public String name;
 	
-	@JSONName(name = "nation")
+	@DataName(name = "nation")
 	public String nation;
 	
-	@JSONName(name = "leader")
+	@DataName(name = "leader")
 	public String leader;
 	
-	@JSONName(name = "continent")
+	@DataName(name = "continent")
 	public Continents continent;
 	
-	@JSONName(name = "founded")
+	@DataName(name = "founded")
 	public Date founded;
 	
-	@JSONName(name = "age")
+	@DataName(name = "age")
 	public int age;
 	
-	@JSONName(name = "powered")
+	@DataName(name = "powered")
 	public boolean powered;
 	
-	@JSONName(name = "infrastructure")
+	@DataName(name = "infrastructure")
 	public float infra;
 	
-	@JSONName(name = "land")
+	@DataName(name = "land")
 	public float land;
 	
-	@JSONName(name = "population")
+	@DataName(name = "population")
 	public double pop;
 	
-	@JSONName(name = "popdensity")
+	@DataName(name = "popdensity")
 	public float density;
 	
-	@JSONName(name = "crime")
+	@DataName(name = "crime")
 	public float crime;
 	
-	@JSONName(name = "disease")
+	@DataName(name = "disease")
 	public float disease;
 	
-	@JSONName(name = "commerce")
+	@DataName(name = "commerce")
 	public float commerce;
 	
-	@JSONName(name = "avgincome")
+	@DataName(name = "avgincome")
 	public float avgincome;
 	
-	@JSONName(name = "pollution")
+	@DataName(name = "pollution")
 	public float pollution;
 	
-	@JSONName(name = "nuclearpollution")
+	@DataName(name = "nuclearpollution")
 	public float radiation;
 	
-	@JSONName(name = "basepop")
+	@DataName(name = "basepop")
 	public float basepop;
 	
-	@JSONName(name = "basepopdensity")
+	@DataName(name = "basepopdensity")
 	public float basedense;
 	
-	@JSONName(name = "minimumwage")
+	@DataName(name = "minimumwage")
 	public float minwage;
 	
-	@JSONName(name = "poplostdisease")
+	@DataName(name = "poplostdisease")
 	public float deathdisease;
 	
-	@JSONName(name = "poplostcrime")
+	@DataName(name = "poplostcrime")
 	public float deathcrime;
 	
-	@JSONName(name = "imp_coalpower")
+	@DataName(name = "imp_coalpower")
 	public byte coalpowers;
 	
-	@JSONName(name = "imp_oilpower")
+	@DataName(name = "imp_oilpower")
 	public byte oilpowers;
 	
-	@JSONName(name = "imp_nuclearpower")
+	@DataName(name = "imp_nuclearpower")
 	public byte nukepowers;
 	
-	@JSONName(name = "imp_windpower")
+	@DataName(name = "imp_windpower")
 	public byte windpowers;
 	
-	@JSONName(name = "imp_coalmine")
+	@DataName(name = "imp_coalmine")
 	public byte coalmines;
 	
-	@JSONName(name = "imp_oilwell")
+	@DataName(name = "imp_oilwell")
 	public byte oilwells;
 	
-	@JSONName(name = "imp_ironmine")
+	@DataName(name = "imp_ironmine")
 	public byte ironmines;
 	
-	@JSONName(name = "imp_bauxitemine")
+	@DataName(name = "imp_bauxitemine")
 	public byte bauxmines;
 	
-	@JSONName(name = "imp_leadmine")
+	@DataName(name = "imp_leadmine")
 	public byte leadmines;
 	
-	@JSONName(name = "imp_uramine")
+	@DataName(name = "imp_uramine")
 	public byte uranmines;
 	
-	@JSONName(name = "imp_farm")
+	@DataName(name = "imp_farm")
 	public byte farms;
 	
-	@JSONName(name = "imp_gasrefinery")
+	@DataName(name = "imp_gasrefinery")
 	public byte gasorefines;
 	
-	@JSONName(name = "imp_steelmill")
+	@DataName(name = "imp_steelmill")
 	public byte steelmills;
 	
-	@JSONName(name = "imp_aluminumrefinery")
+	@DataName(name = "imp_aluminumrefinery")
 	public byte alumrefines;
 	
-	@JSONName(name = "imp_munitionsfactory")
+	@DataName(name = "imp_munitionsfactory")
 	public byte munitrefines;
 	
-	@JSONName(name = "imp_policestation")
+	@DataName(name = "imp_policestation")
 	public byte police;
 	
-	@JSONName(name = "imp_hospital")
+	@DataName(name = "imp_hospital")
 	public byte hospitals;
 	
-	@JSONName(name = "imp_recyclingcenter")
+	@DataName(name = "imp_recyclingcenter")
 	public byte recyclers;
 	
-	@JSONName(name = "imp_subway")
+	@DataName(name = "imp_subway")
 	public byte subways;
 	
-	@JSONName(name = "imp_supermarket")
+	@DataName(name = "imp_supermarket")
 	public byte supermarkets;
 	
-	@JSONName(name = "imp_bank")
+	@DataName(name = "imp_bank")
 	public byte banks;
 	
-	@JSONName(name = "imp_mall")
+	@DataName(name = "imp_mall")
 	public byte malls;
 	
-	@JSONName(name = "imp_stadium")
+	@DataName(name = "imp_stadium")
 	public byte stadiums;
 	
-	@JSONName(name = "imp_barracks")
+	@DataName(name = "imp_barracks")
 	public byte barracks;
 	
-	@JSONName(name = "imp_factory")
+	@DataName(name = "imp_factory")
 	public byte factories;
 	
-	@JSONName(name = "imp_hangar")
+	@DataName(name = "imp_hangar")
 	public byte hangars;
 	
-	@JSONName(name = "imp_drydock")
+	@DataName(name = "imp_drydock")
 	public byte drydocks;
 
 	@Override

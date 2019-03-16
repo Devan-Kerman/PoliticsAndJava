@@ -5,24 +5,24 @@ import java.util.Date;
 import com.google.common.base.MoreObjects;
 
 import ai.play.devtech.APIObject;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class LowestBuy extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "date")
+	@DataName(name = "date")
 	public Date date;
 	
-	@JSONName(name = "nationid")
+	@DataName(name = "nationid")
 	public int nid;
 	
-	@JSONName(name = "amount")
+	@DataName(name = "amount")
 	public float amount;
 	
-	@JSONName(name = "price")
+	@DataName(name = "price")
 	public float price;
 	
-	@JSONName(name = "totalvalue")
+	@DataName(name = "totalvalue")
 	public float totalval;
 
 	@Override

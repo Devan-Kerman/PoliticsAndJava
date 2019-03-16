@@ -10,6 +10,6 @@ import ai.play.devtech.core.api.objects.AllianceExcerpt;
  */
 public class AllianceCreateHook extends ArrayHook<AllianceExcerpt> {
 	public AllianceCreateHook(APIAggregator agg) {
-		super(agg::getAlliances, (a, a2) -> a.aaid == a2.aaid, true);
+		super(agg::getAlliances, (a, a2) -> a.aaid == a2.aaid, false);
 	}
 }

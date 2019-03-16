@@ -4,32 +4,32 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.WarTypes;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class WarExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;
-	@JSONName(name = "warID")
+	@DataName(name = "warID")
 	public long wid;
 	
-	@JSONName(name = "attackerID")
+	@DataName(name = "attackerID")
 	public int attacker;
 	
-	@JSONName(name = "defenderID")
+	@DataName(name = "defenderID")
 	public int defender;
 	
-	@JSONName(name = "attackerAA")
+	@DataName(name = "attackerAA")
 	public short attackerAA;
 	
-	@JSONName(name = "defenderAA")
+	@DataName(name = "defenderAA")
 	public short defenderAA;
 	
-	@JSONName(name = "war_type")
+	@DataName(name = "war_type")
 	public WarTypes type;
 	
-	@JSONName(name = "status")
+	@DataName(name = "status")
 	public String status;
 	
-	@JSONName(name = "date")
+	@DataName(name = "date")
 	public Date date;
 
 	@Override

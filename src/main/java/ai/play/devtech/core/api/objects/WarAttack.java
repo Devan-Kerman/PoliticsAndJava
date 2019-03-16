@@ -4,78 +4,78 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.AttackType;
-import ai.play.devtech.core.objects.manipulation.JSONName;
+import ai.play.devtech.core.objects.manipulation.DataName;
 
 public class WarAttack extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "war_attack_id")
+	@DataName(name = "war_attack_id")
 	public long attackid;
 	
-	@JSONName(name = "date")
+	@DataName(name = "date")
 	public Date date;
 	
-	@JSONName(name = "war_id")
+	@DataName(name = "war_id")
 	public long warId;
 	
-	@JSONName(name = "attacker_nation_id")
+	@DataName(name = "attacker_nation_id")
 	public int attackernid;
 	
-	@JSONName(name = "defender_nation_id")
+	@DataName(name = "defender_nation_id")
 	public int deffendernid;
 	
-	@JSONName(name = "attack_type")
+	@DataName(name = "attack_type")
 	public AttackType attackType;
 	
-	@JSONName(name = "victor")
+	@DataName(name = "victor")
 	public int victorid;
 	
-	@JSONName(name = "success")
+	@DataName(name = "success")
 	public byte success;
 	
-	@JSONName(name = "attcas1")
+	@DataName(name = "attcas1")
 	public String attcas1; // TODO find out wtf this is
 	
-	@JSONName(name = "attcas2")
+	@DataName(name = "attcas2")
 	public String attcas2;
 	
-	@JSONName(name = "defcas1")
+	@DataName(name = "defcas1")
 	public String defcas1;
 	
-	@JSONName(name = "defcas2")
+	@DataName(name = "defcas2")
 	public String defcas2;
 	
-	@JSONName(name = "city_id")
+	@DataName(name = "city_id")
 	public int cityId;
 	
-	@JSONName(name = "infra_destroyed")
+	@DataName(name = "infra_destroyed")
 	public float infraDed;
 	
-	@JSONName(name = "improvements_destroyed")
+	@DataName(name = "improvements_destroyed")
 	public int improveded;
 	
-	@JSONName(name = "money_looted")
+	@DataName(name = "money_looted")
 	public double moneyLooted;
 	
-	@JSONName(name = "note")
+	@DataName(name = "note")
 	public String note;
 	
-	@JSONName(name = "city_infra_before")
+	@DataName(name = "city_infra_before")
 	public float infrabefore;
 	
-	@JSONName(name = "infra_destroyed_value")
+	@DataName(name = "infra_destroyed_value")
 	public double infradedVal;
 	
-	@JSONName(name = "att_gas_used")
+	@DataName(name = "att_gas_used")
 	public float attGasUsed;
 	
-	@JSONName(name = "att_mun_used")
+	@DataName(name = "att_mun_used")
 	public float attMunUsed;
 	
-	@JSONName(name = "def_gas_used")
+	@DataName(name = "def_gas_used")
 	public float defGasUsed;
 	
-	@JSONName(name = "def_mun_used")
+	@DataName(name = "def_mun_used")
 	public float defMunUsed;
 
 	@Override
