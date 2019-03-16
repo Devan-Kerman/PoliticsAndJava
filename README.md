@@ -13,6 +13,7 @@ A Simple Politics and War API wrapper for Java<br/>
       - fixing other oddities in the api
       - uses Gson, and by extention can handle the occassional malformed json that is given<br/>
   #### 4. Fast - although this layer of type correction does add a delay, it's not significant built in caching is an important part of the library<br/>
+      - This type correction layer does add a noticable delay, but your actual code will end up running faster, for example, string comparison is much slower than floats and enums.
   #### 5. Diverse - will probably copy paste some parts of my old wrapper into this one, such as webscraping and other utilities.<br/>
   #### 6. Easy to use - throwing somewhat usefull exceptions, well, that's what it attempts atleast.<br/>
 # Sample code
