@@ -13,19 +13,11 @@ A Simple Politics and War API wrapper for Java<br/>
       - fixing other oddities in the api
       - uses Gson, and by extention can handle the occassional malformed json that is given<br/>
   #### 4. Fast - although this layer of type correction does add a delay, it's not significant built in caching is an important part of the library<br/>
+      - This type correction layer does add a noticable delay, but your actual code will end up running faster, for example, string comparison is much slower than floats and enums.
   #### 5. Diverse - will probably copy paste some parts of my old wrapper into this one, such as webscraping and other utilities.<br/>
   #### 6. Easy to use - throwing somewhat usefull exceptions, well, that's what it attempts atleast.<br/>
-# Sample code
-`
-APIAggregatorBuilder aab = new APIAggregatorBuilder();<br/>
-aab.setKey("loluactuallythought?");<br/> 
-// Sets what api key to use
-<br/>aab.setTimeout(ChronoUnit.HOURS, 5); <br/>
-// How long until cached information is deemed "invalid"
-<br/>aa.setCacheSize(100);<br/>
-APIAggregator api = aab.build();<br/>
-Alliance aa = api.getAlliance(760);<br/>
-// gets a new alliance with the id of 760
-<br/>System.out.println(aa.toString());<br/>
-`
-
+## This library also includes tons and tons of other epic utilities
+    - Message automation
+    - Other web automations
+    - Web scraping
+    - Hooks
