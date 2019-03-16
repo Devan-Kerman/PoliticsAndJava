@@ -18,6 +18,10 @@ public class DLogger {
 	private DLogger() {}
 
 	private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	private static Object[] params() {
+		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
+		return new Object[]{ste.getFileName(), ste.getLineNumber()};
+	}
 	
 	/**
 	 * Initializes the logger
@@ -41,9 +45,9 @@ public class DLogger {
 			public void publish(LogRecord r) {
 				Level l = r.getLevel();
 				if(l.intValue() != Level.SEVERE.intValue())
-					System.out.printf("%s -> %s : %s\n", r.getParameters()[0], l.toString(), r.getMessage());
+					System.out.printf("(%s:%d) -> %s : %s\n", r.getParameters()[0], (Integer)r.getParameters()[1], l.toString(), r.getMessage());
 				else
-					System.err.printf("%s -> %s : %s\n", r.getParameters()[0], l.toString(), r.getMessage());
+					System.err.printf("(%s:%d) -> %s : %s\n", r.getParameters()[0], (Integer)r.getParameters()[1], l.toString(), r.getMessage());
 			}
 		});
 
@@ -54,7 +58,7 @@ public class DLogger {
 	 * @param info
 	 */
 	public static void error(String info) {
-		LOGGER.log(Level.SEVERE, info, Thread.currentThread().getStackTrace()[2]);
+		LOGGER.log(Level.SEVERE, info, params());
 	}
 
 	/**
@@ -62,7 +66,7 @@ public class DLogger {
 	 * @param info
 	 */
 	public static void warn(String info) {
-		LOGGER.log(Level.WARNING, info, Thread.currentThread().getStackTrace()[2]);
+		LOGGER.log(Level.WARNING, info, params());
 	}
 
 	/**
@@ -70,7 +74,7 @@ public class DLogger {
 	 * @param info
 	 */
 	public static void info(String info) {
-		LOGGER.log(Level.INFO, info, Thread.currentThread().getStackTrace()[2]);
+		LOGGER.log(Level.INFO, info, params());
 	}
 
 	/**
@@ -78,7 +82,7 @@ public class DLogger {
 	 * @param info
 	 */
 	public static void debug(String info) {
-		LOGGER.log(Level.CONFIG, info, Thread.currentThread().getStackTrace()[2]);
+		LOGGER.log(Level.CONFIG, info, params());
 	}
 
 	/**
@@ -86,7 +90,7 @@ public class DLogger {
 	 * @param info
 	 */
 	public static void relief(String info) {
-		LOGGER.log(Level.FINE, info, Thread.currentThread().getStackTrace()[2]);
+		LOGGER.log(Level.FINE, info, params());
 	}
 
 }

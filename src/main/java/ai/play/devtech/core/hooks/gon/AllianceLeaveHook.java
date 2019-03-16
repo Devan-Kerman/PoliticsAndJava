@@ -14,7 +14,7 @@ public class AllianceLeaveHook extends ListHook<NationExcerpt> {
 			List<NationExcerpt> ex = Arrays.asList(agg.getAllNations());
 			ex.forEach(n -> doNothing(n.aaid==0?ex.remove(n):null));
 			return ex;
-		}, (n1, n2) -> n1.nid == n2.nid, true);
+		}, (n1, n2) -> n1.nationid == n2.nationid, true);
 	}
 	
 	public static void doNothing(Object o) {/*This litterally does nothing, it's for lambdas and shit*/}

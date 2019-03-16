@@ -2,32 +2,47 @@ package ai.play.devtech.core.api;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.caches.SimpleAPICache;
 import ai.play.devtech.core.api.enums.Resource;
-import ai.play.devtech.core.api.objects.*;
+import ai.play.devtech.core.api.interfaces.APICache;
+import ai.play.devtech.core.api.objects.Alliance;
+import ai.play.devtech.core.api.objects.AllianceExcerpt;
+import ai.play.devtech.core.api.objects.AllianceMember;
+import ai.play.devtech.core.api.objects.City;
+import ai.play.devtech.core.api.objects.CityExcerpt;
+import ai.play.devtech.core.api.objects.Nation;
+import ai.play.devtech.core.api.objects.NationExcerpt;
+import ai.play.devtech.core.api.objects.NationMilitary;
+import ai.play.devtech.core.api.objects.TradeHistory;
+import ai.play.devtech.core.api.objects.War;
+import ai.play.devtech.core.api.objects.WarAttack;
+import ai.play.devtech.core.api.objects.WarExcerpt;
 import ai.play.devtech.core.api.objects.tradeprice.TradePrice;
 import ai.play.devtech.core.api.queries.NationsQuery;
 import ai.play.devtech.core.api.queries.TradeHistoryQuery;
 import ai.play.devtech.core.api.queries.WarAttacksQuery;
 import ai.play.devtech.core.errors.UnsuccessfullAPIException;
-import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
-import ai.play.devtech.core.api.objects.Alliance;
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
 public class APIAggregator {
 
 	protected APICache cache;
 	protected String key = "nokey";
-	public static final String BASE = "https://politicsandwar.com/api/%s/%s";
+	public static final String BASE = "https://politicsandwar.com/api/%s/%s&key=%s";
+	
+	public APIAggregator(String key, APICache cache) {
+		this.cache = cache;
+		this.key = key;
+	}
 
 	/**
 	 * you can use {@link APIAggregatorBuilder}
 	 */
-	public APIAggregator(String key, ChronoUnit unit, int time, int cachesize) {
-		this.key = key;
-		cache = new APICache(unit, time, cachesize);
+	public APIAggregator(String key, ChronoUnit unit, int time, int initialsize) {
+		this(key, new SimpleAPICache(unit, time, initialsize));
 	}
 	
 	/**
@@ -40,8 +55,8 @@ public class APIAggregator {
 	/**
 	 * you can use {@link APIAggregatorBuilder}
 	 */
-	public APIAggregator(String key, int size) {
-		this(key, ChronoUnit.HOURS, 1, size);
+	public APIAggregator(String key, int initialsize) {
+		this(key, ChronoUnit.HOURS, 1, initialsize);
 	}
 	
 	/**
@@ -76,7 +91,7 @@ public class APIAggregator {
 	}
 
 	public TradeHistory[] getTradeHistory(TradeHistoryQuery query) {
-		return getArray("trade-history", query.build(key), "trades", TradeHistory[].class);
+		return getArray("trade-history", query.build(), "trades", TradeHistory[].class);
 	}
 
 	public NationExcerpt[] getNations(NationsQuery query) {
@@ -92,7 +107,7 @@ public class APIAggregator {
 	}
 
 	public AllianceMember[] getMembers(int id) {
-		return getArray("alliance-members", "?allianceid=" + id + "&key=" + key, "nations", AllianceMember[].class);
+		return getArray("alliance-members", "?allianceid=" + id, "nations", AllianceMember[].class);
 	}
 
 	public Alliance getAlliance(int id) {
@@ -100,7 +115,7 @@ public class APIAggregator {
 	}
 
 	public CityExcerpt[] getCities() {
-		return getArray("all-cities", "key=" + key, "all_cities", CityExcerpt[].class);
+		return getArray("all-cities", "", "all_cities", CityExcerpt[].class);
 	}
 
 	public AllianceExcerpt[] getAlliances() {
@@ -116,7 +131,7 @@ public class APIAggregator {
 	}
 
 	public NationMilitary[] getMilitaries() {
-		return getArray("nation-military", "key=" + key, "nation_militaries", NationMilitary[].class);
+		return getArray("nation-military", "", "nation_militaries", NationMilitary[].class);
 	}
 	
 	public TradePrice getCoal() {
@@ -179,14 +194,16 @@ public class APIAggregator {
 	 * @return the (hopefulyl correct type)
 	 */
 	protected <T extends APIObject> T[] getArray(String cat, String extend, String id, Class<T[]> clas) {
-		String url = String.format(BASE, cat, extend);
-		Map<String, Object> map = cache.<Map>request(url, Map.class);
-		Object o = map.get("success");
-		if (o == null || !(Boolean) o)
-			throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
-		ObjectBuilder<T[]> obj = new ObjectBuilder<>(clas);
-		obj.add("array", map.get(id));
-		return obj.build();
+		String url = String.format(BASE, cat, extend, key);
+		System.out.printf("New URL request: %s\n", url);
+		return cache.<T[]>get(url, clas, m -> {
+			Object o = m.remove("success");
+			if (o == null || !(Boolean) o)
+				throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
+			Map<String, Object> map = new HashMap<>();
+			map.put("array", map.get(id));
+			return map;
+		});
 	}
 
 	/**
@@ -200,14 +217,13 @@ public class APIAggregator {
 	 * @return the (hopefulyl correct type)
 	 */
 	protected <T extends APIObject> T getObj(String cat, String extend, Class<T> clas) {
-		String url = String.format(BASE, cat, extend);
-		Map<String, Object> map = cache.<Map>request(url, Map.class);
-		Object o = map.remove("success");
-		if (o != null && !(Boolean) o)
-			throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
-		ObjectBuilder<T> obj = new ObjectBuilder<>(clas);
-		obj.addAll(map);
-		return obj.build();
+		String url = String.format(BASE, cat, extend, key);
+		return cache.get(url, clas, m -> {
+			Object o = m.remove("success");
+			if (o == null || !(Boolean) o)
+				throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
+			return m;
+		});
 	}
 
 }

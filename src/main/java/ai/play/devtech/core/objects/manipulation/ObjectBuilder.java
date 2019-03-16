@@ -5,7 +5,6 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.sql.Date;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -78,6 +77,10 @@ public class ObjectBuilder<T> {
 	public static final DateTimeFormatter dtf1 = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 	public static final DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm:ss");
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private static Enum<?> getEnum(Class tckass, String in) {
+		return Enum.valueOf(tckass, in.toUpperCase().replace(' ', '_'));
+	}
 	@SuppressWarnings("unchecked")
 	private <K> K correct(Object in, Class<K> outtype) {
 		if(in instanceof Optional<?> || in instanceof Optional)
@@ -90,9 +93,8 @@ public class ObjectBuilder<T> {
 		} else if(outtype == String.class) {
 			k =  (K) in.toString();
 		} else if(outtype.isEnum()) {
-			final Object en = in;
 			if(in instanceof String)
-				k =  Arrays.stream(outtype.getEnumConstants()).filter(e -> e.toString().equalsIgnoreCase(en.toString().replace(' ', '_'))).findFirst().get();
+				k =  (K) getEnum(outtype, (String)in);
 		} else if(Date.class.isAssignableFrom(outtype)) {
 			if(in instanceof String)
 				try {

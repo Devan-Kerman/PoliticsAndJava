@@ -14,9 +14,9 @@ public class TradeHistoryQuery {
 		resources+=resource.name().toLowerCase()+',';
 		return this;
 	}
-	public static final String BASE = "key=%s&records=%d";
-	public String build(String key) {
-		StringBuilder add = new StringBuilder(String.format(BASE, key, records));
+	public static final String BASE = "records=%d";
+	public String build() {
+		StringBuilder add = new StringBuilder(String.format(BASE, records));
 		if(resources.length() != "&resources=".length())
 			add.append(resources);
 		return add.toString();

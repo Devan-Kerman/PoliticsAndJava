@@ -1,7 +1,6 @@
 package ai.play.devtech;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 import com.google.gson.Gson;
 
@@ -12,7 +11,6 @@ public abstract class APIObject implements Serializable, Cloneable {
 	 */
 	private static final long serialVersionUID = -4744850309641999485L;
 	static final Gson GSON = new Gson();
-	public Instant birth;
 	
 	@Override
 	public String toString() {
@@ -35,4 +33,5 @@ public abstract class APIObject implements Serializable, Cloneable {
 	}
 	
 	public abstract long getID();
+	
 }

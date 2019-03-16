@@ -21,8 +21,8 @@ import org.apache.http.util.EntityUtils;
 
 import ai.play.devtech.DLogger;
 import ai.play.devtech.core.errors.TooManyCCException;
-import ai.play.devtech.util.DoNothing;
 import ai.play.devtech.util.files.SaveUtil;
+import ai.play.devtech.util.logic.DoNothing;
 
 /**
  * A virtual "player", used for messaging, city shtuff, and all around coolness

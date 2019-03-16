@@ -7,7 +7,7 @@ import ai.play.devtech.core.hooks.ArrayHook;
 public class NationDeleteHook extends ArrayHook<NationExcerpt> {
 
 	public NationDeleteHook(APIAggregator agg) {
-		super(agg::getAllNations, (i, i2) -> i.nid == i2.nid, true);
+		super(agg::getAllNations, (i, i2) -> i.nationid == i2.nationid, true);
 	}
 
 }

@@ -16,7 +16,7 @@ public class GameJoinHook extends ArrayHook<NationExcerpt> {
 	 * 		The api aggregator needed to run the hook
 	 */
 	public GameJoinHook(APIAggregator agg) {
-		super(agg::getAllNations, (i, i2) -> i.nid == i2.nid, false);
+		super(agg::getAllNations, (i, i2) -> i.nationid == i2.nationid, true);
 	}
 	
 }

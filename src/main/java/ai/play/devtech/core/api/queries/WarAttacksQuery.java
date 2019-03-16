@@ -35,12 +35,11 @@ public class WarAttacksQuery {
 			return "";
 		else if(!query.containsKey("war_id")){
 			StringBuilder add = new StringBuilder();
-			add.append("key="+key);
-			query.forEach((k, v) -> add.append('&'+k+'='+v));
-			add.delete(add.length()-1, add.length()-1);
+			query.forEach((k, v) -> add.append(k+'='+v+'&'));
+			add.delete(add.length()-1, add.length());
 			return add.toString();
 		} else {
-			return "key="+key+"&war_id="+query.get("war_id");
+			return "war_id="+query.get("war_id");
 		}
 	}
 

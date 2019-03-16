@@ -4,6 +4,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
+import ai.play.devtech.core.api.caches.SimpleAPICache;
+
 /**
  * This class is not thread-safe, as you should only be using this occassionally, and definetly not multithreadedly
  * The {@link APIAggregator} is thread-safe on the other hand
@@ -50,7 +52,7 @@ public class APIAggregatorBuilder {
 	
 	public APIAggregator build() {
 		APIAggregator agg = new APIAggregator("");
-		agg.cache = new APICache((int)data.get("size"), (Period)data.get("time"));
+		agg.cache = new SimpleAPICache((int)data.get("size"), (Period)data.get("time"));
 		agg.key = (String)data.get("key");
 		return agg;
 	}

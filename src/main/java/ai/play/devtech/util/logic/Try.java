@@ -1,4 +1,4 @@
-package ai.play.devtech.util.java;
+package ai.play.devtech.util.logic;
 
 public class Try {
 

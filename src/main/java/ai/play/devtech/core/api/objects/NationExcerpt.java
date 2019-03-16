@@ -9,8 +9,8 @@ import ai.play.devtech.core.objects.manipulation.JSONName;
 public class NationExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@JSONName(name = "nation_id")
-	public int nid;
+	@JSONName(name = "nationid")
+	public int nationid;
 	
 	@JSONName(name = "nation")
 	public String name;
@@ -64,8 +64,26 @@ public class NationExcerpt extends APIObject {
 
 	@Override
 	public long getID() {
-		return nid;
+		return nationid;
 	}
 	
+	/**
+	 * Checks if the target nation's score is within war declaration range of the player
+	 * @param targetScore
+	 * 		the target's score
+	 * @return
+	 */
+	public boolean canAttack(float targetScore) {
+		return score*1.75 < targetScore && score*.75 > targetScore;
+	}
 	
+	/**
+	 * Checks if the aggressor is in range of this nation
+	 * @param aggScore
+	 * 		aggressors score
+	 * @return
+	 */
+	public boolean shouldDefend(float aggScore) {
+		return aggScore*1.75 < score && aggScore*.75 > score;
+	}
 }
