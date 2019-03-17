@@ -3,6 +3,11 @@ package ai.play.devtech.core.hooks;
 import ai.play.devtech.core.api.APIAggregator;
 import ai.play.devtech.core.api.objects.WarExcerpt;
 
+/**
+ * Triggers listeners when a war is declared
+ *
+ * @author devan
+ */
 public class WarDecHook extends ArrayHook<WarExcerpt> {
 
 	public WarDecHook(APIAggregator agg) {

@@ -1,18 +1,16 @@
 package ai.play.devtech.core.api.objects;
 
-import java.util.Date;
-
-import org.beryx.awt.color.ColorFactory;
-
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.Colors;
 import ai.play.devtech.core.api.enums.Continents;
 import ai.play.devtech.core.objects.manipulation.DataName;
+import org.beryx.awt.color.ColorFactory;
+import java.util.Date;
 
 /**
  * The object in the Alliances API
- * @author devan
  *
+ * @author devan
  */
 public class AllianceExcerpt extends APIObject {
 	private static final long serialVersionUID = 1L;
@@ -20,70 +18,70 @@ public class AllianceExcerpt extends APIObject {
 	/**
 	 * Alliance id
 	 */
-	@DataName(name = "id")
+	@DataName (name = "id")
 	public short aaid;
-	
+
 	/**
 	 * The day they were created
 	 */
-	@DataName(name = "founddate")
+	@DataName (name = "founddate")
 	public Date founded;
-	
+
 	/**
 	 * Alliance name
 	 */
-	@DataName(name = "name")
+	@DataName (name = "name")
 	public String name;
-	
+
 	/**
 	 * Alliance acronym
 	 */
-	@DataName(name = "acronym")
+	@DataName (name = "acronym")
 	public String acro;
-	
+
 	/**
 	 * Color of the alliance (enum form) use {@link ColorFactory#valueOf(String)} in order to obtain java color object
 	 */
-	@DataName(name = "color")
+	@DataName (name = "color")
 	public Colors color;
-	
+
 	/**
 	 * The current continent that the nation is on
 	 */
-	@DataName(name = "continent")
+	@DataName (name = "continent")
 	public Continents continent;
-	
+
 	/**
 	 * The alliances rank
 	 */
-	@DataName(name = "rank")
+	@DataName (name = "rank")
 	public short rank;
-	
-	@DataName(name = "members")
+
+	@DataName (name = "members")
 	public short members;
-	
-	@DataName(name = "score")
+
+	@DataName (name = "score")
 	public double score;
-	
-	@DataName(name = "leaderids")
+
+	@DataName (name = "leaderids")
 	public int[] lids;
-	
-	@DataName(name = "officerids")
+
+	@DataName (name = "officerids")
 	public int[] oids;
-	
-	@DataName(name = "heirids")
+
+	@DataName (name = "heirids")
 	public int[] hids;
-	
-	@DataName(name = "avgscore")
+
+	@DataName (name = "avgscore")
 	public float avgscore;
-	
-	@DataName(name = "flagurl")
+
+	@DataName (name = "flagurl")
 	public String flagurl;
-	
-	@DataName(name = "forumurl")
+
+	@DataName (name = "forumurl")
 	public String forum;
-	
-	@DataName(name = "ircchan")
+
+	@DataName (name = "ircchan")
 	public String irc;
 
 	@Override

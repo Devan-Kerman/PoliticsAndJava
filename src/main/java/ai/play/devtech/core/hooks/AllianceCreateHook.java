@@ -5,8 +5,8 @@ import ai.play.devtech.core.api.objects.AllianceExcerpt;
 
 /**
  * This class will trigger all of it's listeners when a new alliance is created
- * @author devan
  *
+ * @author devan
  */
 public class AllianceCreateHook extends ArrayHook<AllianceExcerpt> {
 	public AllianceCreateHook(APIAggregator agg) {

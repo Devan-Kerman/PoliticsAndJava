@@ -2,9 +2,8 @@ package ai.play.devtech.util.logic;
 
 /**
  * For those epic bruh moments
- * 
- * @author devan
  *
+ * @author devan
  */
 public class DoNothing {
 
@@ -14,7 +13,7 @@ public class DoNothing {
 
 	/**
 	 * Does nothing
-	 * 
+	 *
 	 * @param objects idk
 	 */
 	public static void nothing(Object... objects) {
@@ -23,7 +22,7 @@ public class DoNothing {
 
 	/**
 	 * Returns true
-	 * 
+	 *
 	 * @return true
 	 */
 	public static boolean retTrue() {

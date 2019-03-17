@@ -1,23 +1,16 @@
 package ai.play.devtech.util.files;
 
-import java.awt.Desktop;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-
 import ai.play.devtech.util.logic.ExceptionWrapper;
 import ai.play.devtech.util.strings.Rand;
+import java.awt.Desktop;
+import java.io.*;
 
 public class SaveUtil {
 
 	/**
 	 * Uses a writer to append to a temporary file and open it on the desktop
-	 * @throws IOException 
+	 *
+	 * @throws IOException
 	 */
 	public static void open(BufferedReader r, String type) throws IOException {
 		File f = File.createTempFile(Rand.randEng(10), type);
@@ -26,9 +19,10 @@ public class SaveUtil {
 		writer.close();
 		Desktop.getDesktop().open(f);
 	}
-	
+
 	/**
 	 * Auto buffers the reader and calls {@link SaveUtil#open(BufferedReader, String)}
+	 *
 	 * @param r
 	 * @param type
 	 * @throws IOException
@@ -36,9 +30,10 @@ public class SaveUtil {
 	public static void open(Reader r, String type) throws IOException {
 		open(new BufferedReader(r), type);
 	}
-	
+
 	/**
 	 * Same thing as {@link SaveUtil#open(Reader, String)} but first wraps it in a {@link InputStreamReader}
+	 *
 	 * @param i
 	 * @param type
 	 * @throws IOException
@@ -46,7 +41,6 @@ public class SaveUtil {
 	public static void open(InputStream i, String type) throws IOException {
 		open(new InputStreamReader(i), type);
 	}
-	
-	
+
 
 }

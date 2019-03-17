@@ -1,10 +1,6 @@
 package ai.play.devtech.core.hooks;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -19,9 +15,9 @@ public class ListHook<T> extends TimerTask implements Runnable {
 	Runnable escape;
 
 	/**
-	 * @param src     Supplier of array data
+	 * @param src Supplier of array data
 	 * @param reverse True: new objects False: deleted objects
-	 * @param equals  to determine whether 2 objects are the same or not
+	 * @param equals to determine whether 2 objects are the same or not
 	 */
 	public ListHook(Supplier<List<T>> src, BiPredicate<T, T> equals, boolean reverse) {
 		listeners = new LinkedHashMap<>();
@@ -35,6 +31,7 @@ public class ListHook<T> extends TimerTask implements Runnable {
 		this(src, equals, reverse);
 		this.escape = escape;
 	}
+
 	public void addListener(String id, Consumer<T> joined) {
 		listeners.put(id, joined);
 	}
@@ -47,14 +44,11 @@ public class ListHook<T> extends TimerTask implements Runnable {
 	public void run() {
 		List<T> newdata = agg.get();
 		List<T> dif = new LinkedList<>();
-		if (reverse)
-			old.stream().filter(i -> pC(newdata, i)).forEach(dif::add);
-		else
-			newdata.stream().filter(i -> pC(old, i)).forEach(dif::add);
+		if (reverse) old.stream().filter(i -> pC(newdata, i)).forEach(dif::add);
+		else newdata.stream().filter(i -> pC(old, i)).forEach(dif::add);
 		old = newdata;
 		dif.forEach(t -> listeners.forEach((k, v) -> v.accept(t)));
-		if(escape != null)
-			escape.run();
+		if (escape != null) escape.run();
 	}
 
 	/*
@@ -62,8 +56,7 @@ public class ListHook<T> extends TimerTask implements Runnable {
 	 */
 	public boolean pC(List<T> t, T obj) {
 		for (T tobj : t)
-			if (equals.test(tobj, obj))
-				return true;
+			if (equals.test(tobj, obj)) return true;
 		return false;
 	}
 

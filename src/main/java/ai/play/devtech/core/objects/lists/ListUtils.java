@@ -5,12 +5,19 @@ import java.util.List;
 
 public class ListUtils {
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * Converts a list to an array
+	 *
+	 * @param list the list
+	 * @param clas component type
+	 * @return
+	 */
+	@SuppressWarnings ("unchecked")
 	public static <T> T[] listToArray(List<T> list, Class<T> clas) {
 		Object o = Array.newInstance(clas, list.size());
-		for(int x = 0; x < list.size(); x++)
+		for (int x = 0; x < list.size(); x++)
 			Array.set(o, x, list.get(x));
-		return (T[])o;
+		return (T[]) o;
 	}
 
 }

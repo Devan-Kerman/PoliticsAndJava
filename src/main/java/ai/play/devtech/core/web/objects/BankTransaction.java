@@ -1,9 +1,13 @@
 package ai.play.devtech.core.web.objects;
 
+import ai.play.devtech.APIObject;
 import java.util.Date;
 
-import ai.play.devtech.APIObject;
-
+/**
+ * A transaction using an alliances bank
+ *
+ * @author devan
+ */
 public class BankTransaction {
 
 	Date date;

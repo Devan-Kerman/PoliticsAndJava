@@ -12,7 +12,7 @@ public class StrnCompile {
 		return builder.toString();
 	}
 
-	public static String appendln(String...strn) {
+	public static String appendln(String... strn) {
 		StringBuilder builder = new StringBuilder();
 		Arrays.stream(strn).map(s -> String.format("%s\n", s)).forEach(builder::append);
 		builder.deleteCharAt(builder.length() - 1);

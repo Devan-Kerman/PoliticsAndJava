@@ -4,46 +4,51 @@ import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.enums.AARanks;
 import ai.play.devtech.core.objects.manipulation.DataName;
 
+/**
+ * A nation's military
+ *
+ * @author devan
+ */
 public class NationMilitary extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@DataName(name = "nation_id")
+	@DataName (name = "nation_id")
 	public int nid;
-	
-	@DataName(name = "vm_indicator")
+
+	@DataName (name = "vm_indicator")
 	public int vmturns;
-	
-	@DataName(name = "score")
+
+	@DataName (name = "score")
 	public int score;
-	
-	@DataName(name = "soldiers")
+
+	@DataName (name = "soldiers")
 	public int soldiers;
-	
-	@DataName(name = "tanks")
+
+	@DataName (name = "tanks")
 	public int tanks;
-	
-	@DataName(name = "aircraft")
+
+	@DataName (name = "aircraft")
 	public int planes;
-	
-	@DataName(name = "ships")
+
+	@DataName (name = "ships")
 	public short ships;
-	
-	@DataName(name = "missiles")
+
+	@DataName (name = "missiles")
 	public short missles;
-	
-	@DataName(name = "nukes")
+
+	@DataName (name = "nukes")
 	public short nukes;
-	
-	@DataName(name = "alliance")
+
+	@DataName (name = "alliance")
 	public String alliance;
-	
-	@DataName(name = "alliance_id")
+
+	@DataName (name = "alliance_id")
 	public int aaid;
-	
+
 	/**
 	 * {@link AARanks}
 	 */
-	@DataName(name = "alliance_position")
+	@DataName (name = "alliance_position")
 	public byte aarank;
 
 	@Override

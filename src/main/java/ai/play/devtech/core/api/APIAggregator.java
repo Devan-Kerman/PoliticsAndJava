@@ -1,68 +1,85 @@
 package ai.play.devtech.core.api;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.api.caches.SimpleAPICache;
 import ai.play.devtech.core.api.enums.Resource;
 import ai.play.devtech.core.api.interfaces.APICache;
-import ai.play.devtech.core.api.objects.Alliance;
-import ai.play.devtech.core.api.objects.AllianceExcerpt;
-import ai.play.devtech.core.api.objects.AllianceMember;
-import ai.play.devtech.core.api.objects.City;
-import ai.play.devtech.core.api.objects.CityExcerpt;
-import ai.play.devtech.core.api.objects.Nation;
-import ai.play.devtech.core.api.objects.NationExcerpt;
-import ai.play.devtech.core.api.objects.NationMilitary;
-import ai.play.devtech.core.api.objects.TradeHistory;
-import ai.play.devtech.core.api.objects.War;
-import ai.play.devtech.core.api.objects.WarAttack;
-import ai.play.devtech.core.api.objects.WarExcerpt;
+import ai.play.devtech.core.api.objects.*;
 import ai.play.devtech.core.api.objects.tradeprice.TradePrice;
 import ai.play.devtech.core.api.queries.NationsQuery;
 import ai.play.devtech.core.api.queries.TradeHistoryQuery;
 import ai.play.devtech.core.api.queries.WarAttacksQuery;
 import ai.play.devtech.core.errors.UnsuccessfullAPIException;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ * An object that is used to interface with the API
+ *
+ * @author devan
+ */
 public class APIAggregator {
 
 	protected APICache cache;
 	protected String key = "nokey";
 	public static final String BASE = "https://politicsandwar.com/api/%s/%s&key=%s";
-	
+
+	/**
+	 * Creates a new APIAggregator using the given key and api cache
+	 *
+	 * @param key
+	 * @param cache
+	 */
 	public APIAggregator(String key, APICache cache) {
 		this.cache = cache;
 		this.key = key;
 	}
 
 	/**
-	 * you can use {@link APIAggregatorBuilder}
+	 * Creates a new APIAggregator using a simple api cache
+	 *
+	 * @param key an API key
+	 * @param unit unit of time
+	 * @param time amount of that time
+	 * @param initialsize initial size
 	 */
-	public APIAggregator(String key, ChronoUnit unit, int time, int initialsize) {
+	public APIAggregator(String key, TemporalUnit unit, int time, int initialsize) {
 		this(key, new SimpleAPICache(unit, time, initialsize));
 	}
-	
+
 	/**
-	 * you can use {@link APIAggregatorBuilder}
+	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)} But with
+	 * 1 hour and 50 as inital size
+	 *
+	 * @param key
 	 */
 	public APIAggregator(String key) {
 		this(key, ChronoUnit.HOURS, 1, 50);
 	}
-	
+
 	/**
-	 * you can use {@link APIAggregatorBuilder}
+	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)} but with
+	 * 1 hour default
+	 *
+	 * @param key key
+	 * @param initialsize initial size of cache
 	 */
 	public APIAggregator(String key, int initialsize) {
 		this(key, ChronoUnit.HOURS, 1, initialsize);
 	}
-	
+
 	/**
-	 * you can use {@link APIAggregatorBuilder}
+	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)}
+	 * but with default 50 initial capacity
+	 *
+	 * @param key
+	 * @param unit
+	 * @param time
 	 */
-	public APIAggregator(String key, ChronoUnit unit, int time) {
+	public APIAggregator(String key, TemporalUnit unit, int time) {
 		this(key, unit, time, 50);
 	}
 
@@ -72,10 +89,7 @@ public class APIAggregator {
 
 	public WarExcerpt[] getWars(int numofwars, int... alliances) {
 		String strn = Arrays.toString(alliances);
-		return getArray("wars",
-				(alliances == null || alliances.length == 0) ? "wars/" + numofwars
-						: String.format("wars/%d?allianceid=%s", numofwars, strn.substring(0, strn.length() - 1)),
-				"wars", WarExcerpt[].class);
+		return getArray("wars", (alliances == null || alliances.length == 0) ? "wars/" + numofwars : String.format("wars/%d?allianceid=%s", numofwars, strn.substring(0, strn.length() - 1)), "wars", WarExcerpt[].class);
 	}
 
 	public WarExcerpt[] getWars() {
@@ -133,7 +147,7 @@ public class APIAggregator {
 	public NationMilitary[] getMilitaries() {
 		return getArray("nation-military", "", "nation_militaries", NationMilitary[].class);
 	}
-	
+
 	public TradePrice getCoal() {
 		return getObj("tradeprice", "resource=coal", TradePrice.class);
 	}
@@ -177,7 +191,7 @@ public class APIAggregator {
 	public TradePrice getCredits() {
 		return getObj("tradeprice", "resource=credits", TradePrice.class);
 	}
-	
+
 	/*
 	 * public Bank getBank(int aaid) { return getObj("alliance-bank",
 	 * "?allianceid="+aaid+"&key="+key); }
@@ -186,11 +200,11 @@ public class APIAggregator {
 	/**
 	 * Gets an object from the api (if the object is returned as a singleton or a
 	 * regular object)
-	 * 
-	 * @param cat    the catagory AKA what goes after /api/ but before the
-	 *               /parameters=here
+	 *
+	 * @param cat the catagory AKA what goes after /api/ but before the
+	 * /parameters=here
 	 * @param extend the parameters, AKA what goes after api/cat/
-	 * @param clas   the desired type
+	 * @param clas the desired type
 	 * @return the (hopefulyl correct type)
 	 */
 	protected <T extends APIObject> T[] getArray(String cat, String extend, String id, Class<T[]> clas) {
@@ -198,8 +212,7 @@ public class APIAggregator {
 		System.out.printf("New URL request: %s\n", url);
 		return cache.<T[]>get(url, clas, m -> {
 			Object o = m.remove("success");
-			if (o == null || !(Boolean) o)
-				throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
+			if (o == null || !(Boolean) o) throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
 			Map<String, Object> map = new HashMap<>();
 			map.put("array", map.get(id));
 			return map;
@@ -209,19 +222,18 @@ public class APIAggregator {
 	/**
 	 * Gets an object from the api (if the object is returned as a singleton or a
 	 * regular object)
-	 * 
-	 * @param cat    the catagory AKA what goes after /api/ but before the
-	 *               /parameters=here
+	 *
+	 * @param cat the catagory AKA what goes after /api/ but before the
+	 * /parameters=here
 	 * @param extend the parameters, AKA what goes after api/cat/
-	 * @param clas   the desired type
+	 * @param clas the desired type
 	 * @return the (hopefulyl correct type)
 	 */
 	protected <T extends APIObject> T getObj(String cat, String extend, Class<T> clas) {
 		String url = String.format(BASE, cat, extend, key);
 		return cache.get(url, clas, m -> {
 			Object o = m.remove("success");
-			if (o == null || !(Boolean) o)
-				throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
+			if (o == null || !(Boolean) o) throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
 			return m;
 		});
 	}

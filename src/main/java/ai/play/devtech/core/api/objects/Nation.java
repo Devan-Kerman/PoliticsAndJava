@@ -1,252 +1,250 @@
 package ai.play.devtech.core.api.objects;
 
+import ai.play.devtech.APIObject;
+import ai.play.devtech.core.api.enums.*;
+import ai.play.devtech.core.objects.manipulation.DataName;
 import java.util.Date;
 
-import ai.play.devtech.APIObject;
-import ai.play.devtech.core.api.enums.Colors;
-import ai.play.devtech.core.api.enums.Continents;
-import ai.play.devtech.core.api.enums.DomesticPolicies;
-import ai.play.devtech.core.api.enums.EconomicPolicies;
-import ai.play.devtech.core.api.enums.Season;
-import ai.play.devtech.core.api.enums.SocialPolicies;
-import ai.play.devtech.core.api.enums.WarPolicies;
-import ai.play.devtech.core.objects.manipulation.DataName;
-
+/**
+ * A class that represents an ingame nation
+ *
+ * @author devan
+ */
 public class Nation extends APIObject {
 	private static final long serialVersionUID = 1L;
 
-	@DataName(name = "cityids")
+	@DataName (name = "cityids")
 	public int[] cityids;
-	
-	@DataName(name = "cityprojecttimerturns")
+
+	@DataName (name = "cityprojecttimerturns")
 	public byte citytimer;
-	
-	@DataName(name = "nationid")
+
+	@DataName (name = "nationid")
 	public int nationid;
-	
-	@DataName(name = "name")
+
+	@DataName (name = "name")
 	public String name;
-	
-	@DataName(name = "prename")
+
+	@DataName (name = "prename")
 	public String prename;
-	
-	@DataName(name = "continent")
+
+	@DataName (name = "continent")
 	public Continents continent;
-	
-	@DataName(name = "socialpolicy")
+
+	@DataName (name = "socialpolicy")
 	public SocialPolicies social;
-	
-	@DataName(name = "color")
+
+	@DataName (name = "color")
 	public Colors color;
-	
-	@DataName(name = "minutessinceactive")
+
+	@DataName (name = "minutessinceactive")
 	public long mininactive;
-	
-	@DataName(name = "uniqueid")
+
+	@DataName (name = "uniqueid")
 	public String uuid;
-	
-	@DataName(name = "government")
+
+	@DataName (name = "government")
 	public String gov;
-	
-	@DataName(name = "domestic_policy")
+
+	@DataName (name = "domestic_policy")
 	public DomesticPolicies domestic;
-	
-	@DataName(name = "war_policy")
+
+	@DataName (name = "war_policy")
 	public WarPolicies war;
-	
-	@DataName(name = "founded")
+
+	@DataName (name = "founded")
 	public Date founded;
-	
+
 	/**
 	 * This is the age in days
 	 */
-	@DataName(name = "daysold")
+	@DataName (name = "daysold")
 	public int age;
-	
-	@DataName(name = "alliance")
+
+	@DataName (name = "alliance")
 	public String alliance;
-	
-	@DataName(name = "allianceposition")
+
+	@DataName (name = "allianceposition")
 	public int aarank;
-	
-	@DataName(name = "allianceid")
+
+	@DataName (name = "allianceid")
 	public int aaid;
-	
-	@DataName(name = "flagurl")
+
+	@DataName (name = "flagurl")
 	public String flag;
-	
-	@DataName(name = "leadername")
+
+	@DataName (name = "leadername")
 	public String leader;
-	
-	@DataName(name = "title")
+
+	@DataName (name = "title")
 	public String title;
-	
-	@DataName(name = "ecopolicy")
+
+	@DataName (name = "ecopolicy")
 	public EconomicPolicies econ;
-	
-	@DataName(name = "approvalrating")
+
+	@DataName (name = "approvalrating")
 	public float approval;
-	
-	@DataName(name = "nationrank")
+
+	@DataName (name = "nationrank")
 	public short rank;
-	
-	@DataName(name = "nationrankstrings")
+
+	@DataName (name = "nationrankstrings")
 	public String rankstrn;
-	
-	@DataName(name = "nrtotal")
+
+	@DataName (name = "nrtotal")
 	public float nrtotal;
-	
-	@DataName(name = "cities")
+
+	@DataName (name = "cities")
 	public byte cities;
-	
-	@DataName(name = "latitude")
+
+	@DataName (name = "latitude")
 	public float latitude;
-	
-	@DataName(name = "longitude")
+
+	@DataName (name = "longitude")
 	public float longitude;
-	
-	@DataName(name = "score")
+
+	@DataName (name = "score")
 	public double score;
-	
-	@DataName(name = "population")
+
+	@DataName (name = "population")
 	public long pop;
-	
-	@DataName(name = "gdp")
+
+	@DataName (name = "gdp")
 	public double gdp;
-	
-	@DataName(name = "totalinfrastructure")
+
+	@DataName (name = "totalinfrastructure")
 	public double totalinfra;
-	
-	@DataName(name = "landarea")
+
+	@DataName (name = "landarea")
 	public double totalland;
-	
-	@DataName(name = "soldiers")
+
+	@DataName (name = "soldiers")
 	public int soldiers;
-	
-	@DataName(name = "soldiercasualties")
+
+	@DataName (name = "soldiercasualties")
 	public int soldiersded;
-	
-	@DataName(name = "soldierskilled")
+
+	@DataName (name = "soldierskilled")
 	public int soldierskilled;
-	
-	@DataName(name = "tanks")
+
+	@DataName (name = "tanks")
 	public int tanks;
-	
-	@DataName(name = "tankcasualties")
+
+	@DataName (name = "tankcasualties")
 	public int tanksded;
-	
-	@DataName(name = "tankskilled")
+
+	@DataName (name = "tankskilled")
 	public int tankskilled;
-	
-	@DataName(name = "aircraft")
+
+	@DataName (name = "aircraft")
 	public int planes;
-	
-	@DataName(name = "aircraftcasualties")
+
+	@DataName (name = "aircraftcasualties")
 	public int planesded;
-	
-	@DataName(name = "aircraftkilled")
+
+	@DataName (name = "aircraftkilled")
 	public int planeskilled;
-	
-	@DataName(name = "ships")
+
+	@DataName (name = "ships")
 	public int ships;
-	
-	@DataName(name = "shipcasualties")
+
+	@DataName (name = "shipcasualties")
 	public int shipsded;
-	
-	@DataName(name = "shipskilled")
+
+	@DataName (name = "shipskilled")
 	public int shipskilled;
-	
-	@DataName(name = "missiles")
+
+	@DataName (name = "missiles")
 	public int missles;
-	
-	@DataName(name = "missilelaunched")
+
+	@DataName (name = "missilelaunched")
 	public int misslaunched;
-	
-	@DataName(name = "missileseaten")
+
+	@DataName (name = "missileseaten")
 	public int misseaten;
-	
-	@DataName(name = "nukes")
+
+	@DataName (name = "nukes")
 	public int nukes;
-	
-	@DataName(name = "nukeslaunched")
+
+	@DataName (name = "nukeslaunched")
 	public int nukeslaunched;
-	
-	@DataName(name = "nukeseaten")
+
+	@DataName (name = "nukeseaten")
 	public int nukeseaten;
-	
-	@DataName(name = "infdesttot")
+
+	@DataName (name = "infdesttot")
 	public double infrakilled;
-	
-	@DataName(name = "infraLost")
+
+	@DataName (name = "infraLost")
 	public double infraded;
-	
-	@DataName(name = "moneyLooted")
+
+	@DataName (name = "moneyLooted")
 	public double moneylooted;
-	
-	@DataName(name = "ironworks")
+
+	@DataName (name = "ironworks")
 	public boolean ironworks;
-	
-	@DataName(name = "bauxiteworks")
+
+	@DataName (name = "bauxiteworks")
 	public boolean bauxworks;
-	
-	@DataName(name = "armsstockpile")
+
+	@DataName (name = "armsstockpile")
 	public boolean armsstock;
-	
-	@DataName(name = "emgasreserve")
+
+	@DataName (name = "emgasreserve")
 	public boolean gasoreserve;
-	
-	@DataName(name = "massirrigation")
+
+	@DataName (name = "massirrigation")
 	public boolean irrigation;
-	
-	@DataName(name = "inttradecenter")
+
+	@DataName (name = "inttradecenter")
 	public boolean tradecenter;
-	
-	@DataName(name = "missilelpad")
+
+	@DataName (name = "missilelpad")
 	public boolean misslepad;
-	
-	@DataName(name = "nuclearresfac")
+
+	@DataName (name = "nuclearresfac")
 	public boolean nukepad;
-	
-	@DataName(name = "irondome")
+
+	@DataName (name = "irondome")
 	public boolean irondome;
-	
-	@DataName(name = "vitaldefsys")
+
+	@DataName (name = "vitaldefsys")
 	public boolean vitaldef;
-	
-	@DataName(name = "intagncy")
+
+	@DataName (name = "intagncy")
 	public boolean intelagency;
-	
-	@DataName(name = "uraniumenrich")
+
+	@DataName (name = "uraniumenrich")
 	public boolean uranrich;
-	
-	@DataName(name = "propbureau")
+
+	@DataName (name = "propbureau")
 	public boolean propbureau;
-	
-	@DataName(name = "cenciveng")
+
+	@DataName (name = "cenciveng")
 	public boolean engineer;
-	
-	@DataName(name = "vmode") 
+
+	@DataName (name = "vmode")
 	public int vmturns;
-	
-	@DataName(name = "offensivewars") 
+
+	@DataName (name = "offensivewars")
 	public byte offwars;
-	
-	@DataName(name = "defensivewars")
+
+	@DataName (name = "defensivewars")
 	public byte defwars;
-	
-	@DataName(name = "offensivewar_ids")
+
+	@DataName (name = "offensivewar_ids")
 	public int[] offwarids;
-	
-	@DataName(name = "defensivewar_ids")
+
+	@DataName (name = "defensivewar_ids")
 	public int[] defwarids;
-	
-	@DataName(name = "beige_turns_left")
+
+	@DataName (name = "beige_turns_left")
 	public short beigeturns;
-	
-	@DataName(name = "radiation_index")
+
+	@DataName (name = "radiation_index")
 	public float radiation;
-	
-	@DataName(name = "season")
+
+	@DataName (name = "season")
 	public Season season;
 
 	public long getID() {

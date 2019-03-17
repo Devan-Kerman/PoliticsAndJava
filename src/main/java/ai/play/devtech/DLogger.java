@@ -7,22 +7,23 @@ import java.util.logging.Logger;
 
 /**
  * For logging and debugging, helps because it shows the recent stack trace so u can see where the print statement was
- * @author devan
  *
+ * @author devan
  */
 public class DLogger {
-	
+
 	/**
 	 * Utility class
 	 */
 	private DLogger() {}
 
 	private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
 	private static Object[] params() {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
 		return new Object[]{ste.getFileName(), ste.getLineNumber()};
 	}
-	
+
 	/**
 	 * Initializes the logger
 	 */
@@ -44,10 +45,10 @@ public class DLogger {
 			@Override
 			public void publish(LogRecord r) {
 				Level l = r.getLevel();
-				if(l.intValue() != Level.SEVERE.intValue())
-					System.out.printf("(%s:%d) -> %s : %s\n", r.getParameters()[0], (Integer)r.getParameters()[1], l.toString(), r.getMessage());
+				if (l.intValue() != Level.SEVERE.intValue())
+					System.out.printf("(%s:%d) -> %s : %s\n", r.getParameters()[0], (Integer) r.getParameters()[1], l.toString(), r.getMessage());
 				else
-					System.err.printf("(%s:%d) -> %s : %s\n", r.getParameters()[0], (Integer)r.getParameters()[1], l.toString(), r.getMessage());
+					System.err.printf("(%s:%d) -> %s : %s\n", r.getParameters()[0], (Integer) r.getParameters()[1], l.toString(), r.getMessage());
 			}
 		});
 
@@ -55,6 +56,7 @@ public class DLogger {
 
 	/**
 	 * Puts an error message on the consol with the stack trace
+	 *
 	 * @param info
 	 */
 	public static void error(String info) {
@@ -63,6 +65,7 @@ public class DLogger {
 
 	/**
 	 * Puts an warn message on the consol with the stack trace
+	 *
 	 * @param info
 	 */
 	public static void warn(String info) {
@@ -71,6 +74,7 @@ public class DLogger {
 
 	/**
 	 * Puts an info message on the consol with the stack trace
+	 *
 	 * @param info
 	 */
 	public static void info(String info) {
@@ -79,6 +83,7 @@ public class DLogger {
 
 	/**
 	 * Puts an debug message on the consol with the stack trace
+	 *
 	 * @param info
 	 */
 	public static void debug(String info) {
@@ -87,6 +92,7 @@ public class DLogger {
 
 	/**
 	 * Puts an relief message on the consol with the stack trace
+	 *
 	 * @param info
 	 */
 	public static void relief(String info) {
