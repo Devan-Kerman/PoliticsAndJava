@@ -6,10 +6,7 @@ import ai.play.devtech.core.objects.lists.ListUtils;
 import ai.play.devtech.web.enums.BountyTypes;
 import ai.play.devtech.web.objects.Bounty;
 import ai.play.devtech.web.objects.ColorVal;
-import io.webfolder.ui4j.api.browser.BrowserEngine;
-import io.webfolder.ui4j.api.browser.BrowserFactory;
 import org.jsoup.nodes.Element;
-import java.io.Closeable;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,12 +16,10 @@ import java.util.List;
  *
  * @author devan
  */
-public class WebAggregator implements Closeable, AutoCloseable {
-	BrowserEngine browser;
+public class WebAggregator {
 	WebCache cache;
 
 	public WebAggregator() {
-		browser = BrowserFactory.getWebKit();
 		cache = new WebCache();
 	}
 
@@ -48,17 +43,6 @@ public class WebAggregator implements Closeable, AutoCloseable {
 			});
 			return ListUtils.listToArray(bounties, Bounty.class);
 		});
-	}
-
-	public static void main(String[] args) {
-		WebAggregator wagg = new WebAggregator();
-		DLogger.debug(Arrays.toString(wagg.getBounties(6563)));
-		wagg.close();
-	}
-
-	@Override
-	public void close() {
-		browser.shutdown();
 	}
 
 }
