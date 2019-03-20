@@ -22,4 +22,8 @@ public enum Urls {
   public String getFormat() {
     return format;
   }
+  
+  public String format(Object...args) {
+    return String.format(format, args);
+  }
 }
