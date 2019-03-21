@@ -1,20 +1,33 @@
 package ai.play.devtech.api;
 
-import ai.play.devtech.APIObject;
-import ai.play.devtech.api.caches.SimpleAPICache;
-import ai.play.devtech.api.enums.Resource;
-import ai.play.devtech.api.interfaces.APICache;
-import ai.play.devtech.api.objects.*;
-import ai.play.devtech.api.objects.tradeprice.TradePrice;
-import ai.play.devtech.api.queries.NationsQuery;
-import ai.play.devtech.api.queries.TradeHistoryQuery;
-import ai.play.devtech.api.queries.WarAttacksQuery;
-import ai.play.devtech.core.errors.UnsuccessfullAPIException;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import ai.play.devtech.APIObject;
+import ai.play.devtech.api.caches.SimpleAPICache;
+import ai.play.devtech.api.enums.Resource;
+import ai.play.devtech.api.enums.Urls;
+import ai.play.devtech.api.interfaces.APICache;
+import ai.play.devtech.api.objects.Alliance;
+import ai.play.devtech.api.objects.AllianceExcerpt;
+import ai.play.devtech.api.objects.AllianceMember;
+import ai.play.devtech.api.objects.City;
+import ai.play.devtech.api.objects.CityExcerpt;
+import ai.play.devtech.api.objects.Nation;
+import ai.play.devtech.api.objects.NationExcerpt;
+import ai.play.devtech.api.objects.NationMilitary;
+import ai.play.devtech.api.objects.TradeHistory;
+import ai.play.devtech.api.objects.War;
+import ai.play.devtech.api.objects.WarAttack;
+import ai.play.devtech.api.objects.WarExcerpt;
+import ai.play.devtech.api.objects.tradeprice.TradePrice;
+import ai.play.devtech.api.queries.NationsQuery;
+import ai.play.devtech.core.errors.UnsuccessfullAPIException;
 
 /**
  * An object that is used to interface with the API
@@ -83,113 +96,147 @@ public class APIAggregator {
 		this(key, unit, time, 50);
 	}
 
-	public WarAttack[] getAttacks(WarAttacksQuery query) {
-		return getArray("war-attacks", query.build(key), "war_attacks", WarAttack[].class);
+	public WarAttack[] getAttacks(int warid) {
+		return getArray(Urls.WAR_ATTACKS_ID.format(key, warid), "war_attacks", WarAttack[].class);
 	}
-
-	public WarExcerpt[] getWars(int numofwars, int... alliances) {
-		String strn = Arrays.toString(alliances);
-		return getArray("wars", (alliances == null || alliances.length == 0) ? "wars/" + numofwars : String.format("wars/%d?allianceid=%s", numofwars, strn.substring(0, strn.length() - 1)), "wars", WarExcerpt[].class);
+	
+	public WarAttack[] getAttacksMin(int minid) {
+		return getArray(Urls.WAR_ATTACKS_MIN.format(key, minid), "war_attacks", WarAttack[].class);
+	}
+	
+	public WarAttack[] getAttacksMax(int maxid) {
+		return getArray(Urls.WAR_ATTACKS_MIN.format(key, maxid), "war_attacks", WarAttack[].class);
+	}
+	
+	public WarAttack[] getAttacksRange(int maxid, int minid) {
+		return getArray(Urls.WAR_ATTACKS_RANGE.format(key, maxid, minid), "war_attacks", WarAttack[].class);
+	}
+	
+	public WarExcerpt[] getMaxAAWars(int num, int...alliances) {
+		return getArray(Urls.WARS_AA_LIMIT.format(num, key, String.join(",",Arrays.stream(alliances).mapToObj(Integer::toString).collect(Collectors.toList()))), "wars", WarExcerpt[].class);
+	}
+	
+	public WarExcerpt[] getAAWars(int...alliances) {
+		return getArray(Urls.WARS_AA.format(String.join(",",Arrays.stream(alliances).mapToObj(Integer::toString).collect(Collectors.toList())), key), "wars", WarExcerpt[].class);
+	}
+	
+	public WarExcerpt[] getMaxWars(int num) {
+		return getArray(Urls.WARS_LIMIT.format(num, key), "wars", WarExcerpt[].class);
 	}
 
 	public WarExcerpt[] getWars() {
-		return getArray("wars", "", "wars", WarExcerpt[].class);
+		return getArray(Urls.WARS.format(key), "wars", WarExcerpt[].class);
 	}
 
 	public War getWar(long id) {
-		return getObj("war", String.valueOf(id), War.class);
+		return getObj(Urls.WAR.format(id), War.class);
 	}
 
 	public TradePrice getPrice(Resource r) {
-		return getObj("tradeprice", "resource=" + r.name().toLowerCase(), TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(r.name().toLowerCase(), key), TradePrice.class);
 	}
-
-	public TradeHistory[] getTradeHistory(TradeHistoryQuery query) {
-		return getArray("trade-history", query.build(), "trades", TradeHistory[].class);
+	
+	public TradeHistory[] getTradeHistory() {
+		return getArray(Urls.TRADE_HISTORY.format(key), "trades", TradeHistory[].class);
+	}
+	
+	public TradeHistory[] getTradeHistory(int trades) {
+		return getArray(Urls.TRADE_HISTORY_RECORDS.format(key, trades), "trades", TradeHistory[].class);
+	}
+	
+	public TradeHistory[] getTradeHistory(int trades, Resource...resources) {
+		return getArray(Urls.TRADE_HISTORY_RESOURCES_AND_RECORDS.format(key, trades, String.join(",", resources)), "trades", TradeHistory[].class);
+	}
+	
+	public TradeHistory[] getTradeHistory(Resource...resources) {
+		return getArray(Urls.TRADE_HISTORY_RESOURCES.format(key, String.join(",", resources)), "trades", TradeHistory[].class);
 	}
 
 	public NationExcerpt[] getNations(NationsQuery query) {
-		return getArray("nations", query.build(), "nations", NationExcerpt[].class);
+		List<String> build = query.build();
+		if(build.isEmpty())
+			return getArray(Urls.NATIONS.format(key), "nations", NationExcerpt[].class);
+		return getArray(Urls.NATIONS.format(key)+'&'+String.join("&", query.build()), "nations", NationExcerpt[].class);
 	}
 
 	public NationExcerpt[] getNations() {
-		return getArray("nations", "", "nations", NationExcerpt[].class);
+		return getNations(new NationsQuery());
 	}
 
 	public NationExcerpt[] getAllNations() {
-		return getArray("nations", new NationsQuery().includeVM(true).build(), "nations", NationExcerpt[].class);
+		return getNations(new NationsQuery().includeVM(true));
 	}
 
 	public AllianceMember[] getMembers(int id) {
-		return getArray("alliance-members", "?allianceid=" + id, "nations", AllianceMember[].class);
+		return getArray(Urls.ALLIANCE_MEMBERS.format(key, id), "nations", AllianceMember[].class);
 	}
 
 	public Alliance getAlliance(int id) {
-		return getObj("alliance", "id=" + id, Alliance.class);
+		return getObj(Urls.ALLIANCE.format(key, id), Alliance.class);
 	}
 
 	public CityExcerpt[] getCities() {
-		return getArray("all-cities", "", "all_cities", CityExcerpt[].class);
+		return getArray(Urls.ALL_CITIES.format(key), "all_cities", CityExcerpt[].class);
 	}
 
 	public AllianceExcerpt[] getAlliances() {
-		return getArray("alliances", "", "alliances", AllianceExcerpt[].class);
+		return getArray(Urls.ALLIANCES.format(key), "alliances", AllianceExcerpt[].class);
 	}
 
 	public City getCity(int id) {
-		return getObj("city", "id=" + id, City.class);
+		return getObj(Urls.CITY.format(key, id), City.class);
 	}
 
 	public Nation getNation(int id) {
-		return getObj("nation", "id=" + id, Nation.class);
+		return getObj(Urls.NATION.format(key, id), Nation.class);
 	}
 
 	public NationMilitary[] getMilitaries() {
-		return getArray("nation-military", "", "nation_militaries", NationMilitary[].class);
+		return getArray(Urls.NATION_MILITARY.format(key), "nation_militaries", NationMilitary[].class);
 	}
 
 	public TradePrice getCoal() {
-		return getObj("tradeprice", "resource=coal", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "coal"), TradePrice.class);
 	}
 
 	public TradePrice getOil() {
-		return getObj("tradeprice", "resource=oil", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "oil"), TradePrice.class);
 	}
 
 	public TradePrice getIron() {
-		return getObj("tradeprice", "resource=iron", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "iron"), TradePrice.class);
 	}
 
 	public TradePrice getUranium() {
-		return getObj("tradeprice", "resource=uranium", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "uranium"), TradePrice.class);
 	}
 
 	public TradePrice getBauxite() {
-		return getObj("tradeprice", "resource=bauxite", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "bauxite"), TradePrice.class);
 	}
 
 	public TradePrice getLead() {
-		return getObj("tradeprice", "resource=lead", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "lead"), TradePrice.class);
 	}
 
 	public TradePrice getGasoline() {
-		return getObj("tradeprice", "resource=gasoline", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "gasoline"), TradePrice.class);
 	}
 
 	public TradePrice getMunitions() {
-		return getObj("tradeprice", "resource=munitions", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "munitions"), TradePrice.class);
 	}
 
 	public TradePrice getSteel() {
-		return getObj("tradeprice", "resource=steel", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "steel"), TradePrice.class);
 	}
 
 	public TradePrice getAluminum() {
-		return getObj("tradeprice", "resource=aluminum", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "aluminum"), TradePrice.class);
 	}
 
 	public TradePrice getCredits() {
-		return getObj("tradeprice", "resource=credits", TradePrice.class);
+		return getObj(Urls.TRADE_PRICE.format(key, "credits"), TradePrice.class);
 	}
 
 	/*
@@ -207,8 +254,7 @@ public class APIAggregator {
 	 * @param clas the desired type
 	 * @return the (hopefulyl correct type)
 	 */
-	protected <T extends APIObject> T[] getArray(String cat, String extend, String id, Class<T[]> clas) {
-		String url = String.format(BASE, cat, extend, key);
+	protected <T extends APIObject> T[] getArray(String url, String id, Class<T[]> clas) {
 		System.out.printf("New URL request: %s\n", url);
 		return cache.<T[]>get(url, clas, m -> {
 			Object o = m.remove("success");
@@ -229,13 +275,11 @@ public class APIAggregator {
 	 * @param clas the desired type
 	 * @return the (hopefulyl correct type)
 	 */
-	protected <T extends APIObject> T getObj(String cat, String extend, Class<T> clas) {
-		String url = String.format(BASE, cat, extend, key);
+	protected <T extends APIObject> T getObj(String url, Class<T> clas) {
 		return cache.get(url, clas, m -> {
 			Object o = m.remove("success");
 			if (o == null || !(Boolean) o) throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
 			return m;
 		});
 	}
-
 }

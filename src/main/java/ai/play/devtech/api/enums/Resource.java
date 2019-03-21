@@ -5,7 +5,7 @@ package ai.play.devtech.api.enums;
  *
  * @author devan
  */
-public enum Resource {
+public enum Resource implements CharSequence {
 	COAL, OIL, URANIUM, IRON, BAUXITE, LEAD, GASOLINE, MUNITIONS, STEEL, ALUMINUM, CREDITS;
 
 	/**
@@ -22,6 +22,21 @@ public enum Resource {
 			if (strn.charAt(0) == upa && strn.charAt(1) == upb) return r;
 		}
 		return COAL;
+	}
+
+	@Override
+	public int length() {
+		return name().length();
+	}
+
+	@Override
+	public char charAt(int index) {
+		return name().charAt(index);
+	}
+
+	@Override
+	public CharSequence subSequence(int start, int end) {
+		return name().subSequence(start, end);
 	}
 }
 

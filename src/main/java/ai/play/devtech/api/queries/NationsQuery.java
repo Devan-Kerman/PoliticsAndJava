@@ -1,7 +1,9 @@
 package ai.play.devtech.api.queries;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Used to query to the nations api
@@ -16,11 +18,11 @@ public class NationsQuery {
 		query = new HashMap<>();
 	}
 
-	public NationsQuery includeVM(boolean inclde) {
+	public NationsQuery includeVM(boolean inclde) { // 17
 		query.put("vm", String.valueOf(inclde));
 		return this;
 	}
-
+	
 	public NationsQuery minScore(float score) {
 		query.put("min_score", String.valueOf(score));
 		return this;
@@ -36,14 +38,7 @@ public class NationsQuery {
 		return this;
 	}
 
-	public String build() {
-		if (query.size() == 0) return "";
-		else {
-			StringBuilder add = new StringBuilder();
-			add.append('?');
-			query.forEach((k, v) -> add.append(k + '=' + v + '&'));
-			add.delete(add.length() - 1, add.length());
-			return add.toString();
-		}
+	public List<String> build() {
+		return query.entrySet().stream().map(e -> e.getKey()+"="+e.getValue()).collect(Collectors.toList());
 	}
 }
