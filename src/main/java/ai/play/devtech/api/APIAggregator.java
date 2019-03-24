@@ -54,9 +54,9 @@ public class APIAggregator {
 	/**
 	 * Creates a new APIAggregator using a simple api cache
 	 *
-	 * @param key an API key
-	 * @param unit unit of time
-	 * @param time amount of that time
+	 * @param key         an API key
+	 * @param unit        unit of time
+	 * @param time        amount of that time
 	 * @param initialsize initial size
 	 */
 	public APIAggregator(String key, TemporalUnit unit, int time, int initialsize) {
@@ -77,7 +77,7 @@ public class APIAggregator {
 	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)} but with
 	 * 1 hour default
 	 *
-	 * @param key key
+	 * @param key         key
 	 * @param initialsize initial size of cache
 	 */
 	public APIAggregator(String key, int initialsize) {
@@ -85,8 +85,8 @@ public class APIAggregator {
 	}
 
 	/**
-	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)}
-	 * but with default 50 initial capacity
+	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)} but with
+	 * default 50 initial capacity
 	 *
 	 * @param key
 	 * @param unit
@@ -99,27 +99,33 @@ public class APIAggregator {
 	public WarAttack[] getAttacks(int warid) {
 		return getArray(Urls.WAR_ATTACKS_ID.format(key, warid), "war_attacks", WarAttack[].class);
 	}
-	
+
 	public WarAttack[] getAttacksMin(int minid) {
 		return getArray(Urls.WAR_ATTACKS_MIN.format(key, minid), "war_attacks", WarAttack[].class);
 	}
-	
+
 	public WarAttack[] getAttacksMax(int maxid) {
 		return getArray(Urls.WAR_ATTACKS_MIN.format(key, maxid), "war_attacks", WarAttack[].class);
 	}
-	
+
 	public WarAttack[] getAttacksRange(int maxid, int minid) {
 		return getArray(Urls.WAR_ATTACKS_RANGE.format(key, maxid, minid), "war_attacks", WarAttack[].class);
 	}
-	
-	public WarExcerpt[] getMaxAAWars(int num, int...alliances) {
-		return getArray(Urls.WARS_AA_LIMIT.format(num, key, String.join(",",Arrays.stream(alliances).mapToObj(Integer::toString).collect(Collectors.toList()))), "wars", WarExcerpt[].class);
+
+	public WarExcerpt[] getMaxAAWars(int num, int... alliances) {
+		return getArray(
+				Urls.WARS_AA_LIMIT.format(num, key,
+						String.join(",",
+								Arrays.stream(alliances).mapToObj(Integer::toString).collect(Collectors.toList()))),
+				"wars", WarExcerpt[].class);
 	}
-	
-	public WarExcerpt[] getAAWars(int...alliances) {
-		return getArray(Urls.WARS_AA.format(String.join(",",Arrays.stream(alliances).mapToObj(Integer::toString).collect(Collectors.toList())), key), "wars", WarExcerpt[].class);
+
+	public WarExcerpt[] getAAWars(int... alliances) {
+		return getArray(Urls.WARS_AA.format(
+				String.join(",", Arrays.stream(alliances).mapToObj(Integer::toString).collect(Collectors.toList())),
+				key), "wars", WarExcerpt[].class);
 	}
-	
+
 	public WarExcerpt[] getMaxWars(int num) {
 		return getArray(Urls.WARS_LIMIT.format(num, key), "wars", WarExcerpt[].class);
 	}
@@ -135,28 +141,31 @@ public class APIAggregator {
 	public TradePrice getPrice(Resource r) {
 		return getObj(Urls.TRADE_PRICE.format(r.name().toLowerCase(), key), TradePrice.class);
 	}
-	
+
 	public TradeHistory[] getTradeHistory() {
 		return getArray(Urls.TRADE_HISTORY.format(key), "trades", TradeHistory[].class);
 	}
-	
+
 	public TradeHistory[] getTradeHistory(int trades) {
 		return getArray(Urls.TRADE_HISTORY_RECORDS.format(key, trades), "trades", TradeHistory[].class);
 	}
-	
-	public TradeHistory[] getTradeHistory(int trades, Resource...resources) {
-		return getArray(Urls.TRADE_HISTORY_RESOURCES_AND_RECORDS.format(key, trades, String.join(",", resources)), "trades", TradeHistory[].class);
+
+	public TradeHistory[] getTradeHistory(int trades, Resource... resources) {
+		return getArray(Urls.TRADE_HISTORY_RESOURCES_AND_RECORDS.format(key, trades, String.join(",", resources)),
+				"trades", TradeHistory[].class);
 	}
-	
-	public TradeHistory[] getTradeHistory(Resource...resources) {
-		return getArray(Urls.TRADE_HISTORY_RESOURCES.format(key, String.join(",", resources)), "trades", TradeHistory[].class);
+
+	public TradeHistory[] getTradeHistory(Resource... resources) {
+		return getArray(Urls.TRADE_HISTORY_RESOURCES.format(key, String.join(",", resources)), "trades",
+				TradeHistory[].class);
 	}
 
 	public NationExcerpt[] getNations(NationsQuery query) {
 		List<String> build = query.build();
-		if(build.isEmpty())
+		if (build.isEmpty())
 			return getArray(Urls.NATIONS.format(key), "nations", NationExcerpt[].class);
-		return getArray(Urls.NATIONS.format(key)+'&'+String.join("&", query.build()), "nations", NationExcerpt[].class);
+		return getArray(Urls.NATIONS.format(key) + '&' + String.join("&", query.build()), "nations",
+				NationExcerpt[].class);
 	}
 
 	public NationExcerpt[] getNations() {
@@ -248,17 +257,18 @@ public class APIAggregator {
 	 * Gets an object from the api (if the object is returned as a singleton or a
 	 * regular object)
 	 *
-	 * @param cat the catagory AKA what goes after /api/ but before the
-	 * /parameters=here
+	 * @param cat    the catagory AKA what goes after /api/ but before the
+	 *               /parameters=here
 	 * @param extend the parameters, AKA what goes after api/cat/
-	 * @param clas the desired type
+	 * @param clas   the desired type
 	 * @return the (hopefulyl correct type)
 	 */
 	protected <T extends APIObject> T[] getArray(String url, String id, Class<T[]> clas) {
 		System.out.printf("New URL request: %s\n", url);
 		return cache.<T[]>get(url, clas, m -> {
 			Object o = m.remove("success");
-			if (o == null || !(Boolean) o) throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
+			if (o == null || !(Boolean) o)
+				throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
 			Map<String, Object> map = new HashMap<>();
 			map.put("array", map.get(id));
 			return map;
@@ -269,16 +279,17 @@ public class APIAggregator {
 	 * Gets an object from the api (if the object is returned as a singleton or a
 	 * regular object)
 	 *
-	 * @param cat the catagory AKA what goes after /api/ but before the
-	 * /parameters=here
+	 * @param cat    the catagory AKA what goes after /api/ but before the
+	 *               /parameters=here
 	 * @param extend the parameters, AKA what goes after api/cat/
-	 * @param clas the desired type
+	 * @param clas   the desired type
 	 * @return the (hopefulyl correct type)
 	 */
 	protected <T extends APIObject> T getObj(String url, Class<T> clas) {
 		return cache.get(url, clas, m -> {
 			Object o = m.remove("success");
-			if (o == null || !(Boolean) o) throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
+			if (o == null || !(Boolean) o)
+				throw new UnsuccessfullAPIException("URL: " + url + " returned \n");
 			return m;
 		});
 	}

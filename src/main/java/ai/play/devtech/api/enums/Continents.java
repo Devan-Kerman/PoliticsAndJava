@@ -6,5 +6,5 @@ package ai.play.devtech.api.enums;
  * @author devan
  */
 public enum Continents {
-	AFRICA, ANTARCTICA, ASIA, AUSTRALIA, EUROPE, NORTH_AMERICA, SOUTH_AMERICA;
+	GLOBAL, AFRICA, ANTARCTICA, ASIA, AUSTRALIA, EUROPE, NORTH_AMERICA, SOUTH_AMERICA;
 }
