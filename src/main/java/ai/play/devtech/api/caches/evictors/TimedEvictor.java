@@ -1,10 +1,11 @@
 package ai.play.devtech.api.caches.evictors;
 
-import ai.play.devtech.api.interfaces.Evictor;
-import com.google.common.collect.Maps;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import ai.play.devtech.core.interfaces.Evictor;
 
 public class TimedEvictor implements Evictor {
 
@@ -13,7 +14,7 @@ public class TimedEvictor implements Evictor {
 
 	public TimedEvictor(Duration expiry) {
 		ms = expiry.toMillis();
-		deaths = Maps.newConcurrentMap();
+		deaths = new ConcurrentHashMap<>();
 	}
 
 	@Override

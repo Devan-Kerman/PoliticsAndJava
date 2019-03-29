@@ -1,10 +1,11 @@
 package ai.play.devtech.api.caches.evictors;
 
-import ai.play.devtech.api.interfaces.Evictor;
-import ai.play.devtech.core.fun.UnsafeUtil;
-import com.google.common.collect.Queues;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+import ai.play.devtech.core.fun.UnsafeUtil;
+import ai.play.devtech.core.interfaces.Evictor;
 
 /**
  * Evitor that evicts based on the amount of memory consumed
@@ -22,7 +23,7 @@ public class MemorySizedEvictor implements Evictor {
 	 */
 	public MemorySizedEvictor(long maxBytes) {
 		this.maxBytes = maxBytes;
-		urls = Queues.newConcurrentLinkedQueue();
+		urls = new ConcurrentLinkedQueue<>();
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package ai.play.devtech.api.hooks;
 
 import ai.play.devtech.api.APIAggregator;
-import ai.play.devtech.api.objects.WarExcerpt;
+import ai.play.devtech.core.api.WarExcerpt;
 
 /**
  * Triggers listeners when a war ends

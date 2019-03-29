@@ -1,10 +1,11 @@
 package ai.play.devtech.web.clients;
 
-import ai.play.devtech.DLogger;
-import ai.play.devtech.core.errors.TooManyCCException;
-import ai.play.devtech.core.util.files.SaveUtil;
-import ai.play.devtech.core.util.logic.DoNothing;
-import org.apache.commons.lang3.StringUtils;
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -16,11 +17,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import ai.play.devtech.Sys;
+import ai.play.devtech.core.errors.TooManyCCException;
+import ai.play.devtech.core.util.files.SaveUtil;
+import ai.play.devtech.core.util.logic.DoNothing;
 
 /**
  * A virtual "player", used for messaging, city shtuff, and all around coolness
@@ -41,7 +42,7 @@ public class PoliticsAndJavaClient implements Closeable {
 		try {
 			login();
 		} catch (IOException e) {
-			DLogger.error("Error on login!");
+			Sys.err("Error on login!");
 			e.printStackTrace();
 		}
 	}
@@ -57,7 +58,7 @@ public class PoliticsAndJavaClient implements Closeable {
 		try {
 			post("https://politicsandwar.com/inbox/message/id=" + msgid, new Val("body", body), new Val("convoid", Integer.toString(msgid)), new Val("receiver", reciever), new Val("sndmsg", "Send Message"));
 		} catch (IOException e) {
-			DLogger.error("unable to send message!");
+			Sys.err("unable to send message!");
 			e.printStackTrace();
 		}
 	}
@@ -84,12 +85,12 @@ public class PoliticsAndJavaClient implements Closeable {
 	 */
 	public void sendMessage(String reciever, String subject, String body, String... cc) {
 		String[] sc = cc;
-		DLogger.debug(reciever);
+		Sys.dbg(reciever);
 		if (DoNothing.retTrue()) return;
 		if (sc.length > 20)
 			throw new TooManyCCException("Too many carbon copy targets " + Arrays.toString(sc) + ": " + sc.length);
 		try {
-			post("https://politicsandwar.com/inbox/message/", new Val("body", body), new Val("carboncopy", StringUtils.join(sc, ",")), new Val("newconversation", "true"), new Val("receiver", reciever), new Val("sndmsg", "Send Message"), new Val("subject", subject));
+			post("https://politicsandwar.com/inbox/message/", new Val("body", body), new Val("carboncopy", String.join(",", sc)), new Val("newconversation", "true"), new Val("receiver", reciever), new Val("sndmsg", "Send Message"), new Val("subject", subject));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,7 +119,7 @@ public class PoliticsAndJavaClient implements Closeable {
 		try {
 			client.close();
 		} catch (IOException e) {
-			DLogger.warn("Failed to close Politics And Java client");
+			Sys.wrn("Failed to close Politics And Java client");
 			e.printStackTrace();
 		}
 	}

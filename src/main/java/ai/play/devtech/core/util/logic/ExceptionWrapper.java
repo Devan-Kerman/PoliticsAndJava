@@ -1,7 +1,7 @@
 package ai.play.devtech.core.util.logic;
 
-import ai.play.devtech.api.interfaces.EProducer;
-import ai.play.devtech.api.interfaces.ERunnable;
+import ai.play.devtech.core.interfaces.EProducer;
+import ai.play.devtech.core.interfaces.ERunnable;
 
 /**
  * Wraps any exceptions that will be thrown by the runnable into a runtime exception instead.

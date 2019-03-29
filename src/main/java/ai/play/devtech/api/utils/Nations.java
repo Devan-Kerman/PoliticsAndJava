@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ai.play.devtech.api.APIAggregator;
-import ai.play.devtech.api.objects.NationExcerpt;
 import ai.play.devtech.api.queries.NationsQuery;
+import ai.play.devtech.core.api.NationExcerpt;
 
 public class Nations {
 

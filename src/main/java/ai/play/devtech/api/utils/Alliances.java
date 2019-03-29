@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ai.play.devtech.api.APIAggregator;
-import ai.play.devtech.api.objects.AllianceExcerpt;
+import ai.play.devtech.core.api.AllianceExcerpt;
 
 public class Alliances {
 	public static Set<AllianceExcerpt> getAllianceSet(APIAggregator agg) {
@@ -29,8 +29,8 @@ public class Alliances {
 		return stream(agg).collect(Collectors.toList());
 	}
 	
-	public static Map<Short, AllianceExcerpt> getIDMap(APIAggregator agg) {
-		return stream(agg).collect(Collectors.toMap(a -> a.aaid, a -> a));
+	public static Map<Integer, AllianceExcerpt> getIDMap(APIAggregator agg) {
+		return stream(agg).collect(Collectors.toMap(a -> a.allianceid, a -> a));
 	}
 
 }

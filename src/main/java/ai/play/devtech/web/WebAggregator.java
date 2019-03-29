@@ -8,13 +8,13 @@ import java.util.Map;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import ai.play.devtech.api.enums.Colors;
-import ai.play.devtech.api.enums.Continents;
+import ai.play.devtech.core.enums.BountyTypes;
+import ai.play.devtech.core.enums.Colors;
+import ai.play.devtech.core.enums.Continents;
 import ai.play.devtech.core.objects.lists.ListUtils;
-import ai.play.devtech.web.enums.BountyTypes;
-import ai.play.devtech.web.objects.Bounty;
-import ai.play.devtech.web.objects.ColorVal;
-import ai.play.devtech.web.objects.Radiation;
+import ai.play.devtech.core.web.Bounty;
+import ai.play.devtech.core.web.ColorVal;
+import ai.play.devtech.core.web.Radiation;
 
 /**
  * An api aggregator, but for the politics and war website (webscraper)

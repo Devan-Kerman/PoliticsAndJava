@@ -1,8 +1,8 @@
 package ai.play.devtech.api.caches;
 
-import ai.play.devtech.api.interfaces.APICache;
-import ai.play.devtech.api.interfaces.Evictor;
 import ai.play.devtech.core.errors.RequestDeniedException;
+import ai.play.devtech.core.interfaces.APICache;
+import ai.play.devtech.core.interfaces.Evictor;
 import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
 import ai.play.devtech.core.util.logic.ExceptionWrapper;
 import ai.play.devtech.core.util.logic.Lock;

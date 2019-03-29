@@ -1,7 +1,7 @@
 package ai.play.devtech.api.hooks;
 
 import ai.play.devtech.api.APIAggregator;
-import ai.play.devtech.api.objects.NationExcerpt;
+import ai.play.devtech.core.api.NationExcerpt;
 
 /**
  * An instance of this class will trigger all of it's listeners when a new nation joins the game, make sure to put this in a thread/timer of your choice

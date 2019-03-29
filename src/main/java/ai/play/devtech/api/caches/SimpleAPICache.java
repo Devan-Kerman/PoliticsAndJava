@@ -1,15 +1,10 @@
 package ai.play.devtech.api.caches;
 
-import ai.play.devtech.api.interfaces.APICache;
-import ai.play.devtech.api.misc.Entry;
-import ai.play.devtech.core.errors.InvalidAPIURLException;
-import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -19,6 +14,14 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.function.Function;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import ai.play.devtech.core.errors.InvalidAPIURLException;
+import ai.play.devtech.core.interfaces.APICache;
+import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
+import ai.play.devtech.core.util.misc.Entry;
 
 /**
  * This cache is a simple implmenetation, it evicts data based on how long they've been in the cache, if it's over the
@@ -67,7 +70,11 @@ public class SimpleAPICache implements APICache {
 		} else datamap.remove(url);
 		StringBuilder builder = new StringBuilder();
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
+			URL uurl = new URL(url);
+			URLConnection conn = uurl.openConnection();
+			conn.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36");
+			conn.setReadTimeout(30000);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			reader.lines().forEach(builder::append);
 			reader.close();
 		} catch (IOException e) {

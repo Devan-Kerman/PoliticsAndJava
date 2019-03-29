@@ -1,7 +1,7 @@
 package ai.play.devtech.api.hooks;
 
 import ai.play.devtech.api.APIAggregator;
-import ai.play.devtech.api.objects.NationExcerpt;
+import ai.play.devtech.core.api.NationExcerpt;
 
 /**
  * Triggers listeners when a nation is deleted

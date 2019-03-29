@@ -1,7 +1,7 @@
 package ai.play.devtech.api.hooks;
 
 import ai.play.devtech.api.APIAggregator;
-import ai.play.devtech.api.objects.tradeprice.TradePrice;
+import ai.play.devtech.core.api.tradeprice.TradePrice;
 
 /**
  * Triggers all listeners every time it's called with new trade info

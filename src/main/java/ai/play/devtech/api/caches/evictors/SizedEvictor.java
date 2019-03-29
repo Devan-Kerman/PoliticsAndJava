@@ -1,9 +1,10 @@
 package ai.play.devtech.api.caches.evictors;
 
-import ai.play.devtech.api.interfaces.Evictor;
-import com.google.common.collect.Queues;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+import ai.play.devtech.core.interfaces.Evictor;
 
 /**
  * An evictor that evicts objects based on priority, and only after the cache holds over the specified max size
@@ -20,7 +21,7 @@ public class SizedEvictor implements Evictor {
 	 */
 	public SizedEvictor(int maxsize) {
 		this.maxsize = maxsize;
-		urls = Queues.newConcurrentLinkedQueue();
+		urls = new ConcurrentLinkedQueue<>();
 	}
 
 	@Override

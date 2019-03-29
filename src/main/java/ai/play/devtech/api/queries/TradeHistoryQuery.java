@@ -1,6 +1,6 @@
 package ai.play.devtech.api.queries;
 
-import ai.play.devtech.api.enums.Resource;
+import ai.play.devtech.core.enums.Resource;
 
 /**
  * Used to query the trade history api
