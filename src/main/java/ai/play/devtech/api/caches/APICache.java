@@ -1,4 +1,4 @@
-package ai.play.devtech.core.interfaces;
+package ai.play.devtech.api.caches;
 
 import java.util.Map;
 import java.util.function.Function;

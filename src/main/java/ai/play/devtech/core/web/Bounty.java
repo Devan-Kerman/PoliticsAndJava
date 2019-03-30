@@ -4,7 +4,7 @@ package ai.play.devtech.core.web;
 import java.io.Serializable;
 
 import ai.play.devtech.core.enums.BountyTypes;
-import ai.play.devtech.core.util.strings.ToString;
+import ai.play.devtech.core.util.s.Strings;
 
 /**
  * An ingame bounty
@@ -32,7 +32,7 @@ public class Bounty  implements Serializable {
 
 	@Override
 	public String toString() {
-		return ToString.toJson(this);
+		return Strings.toJson(this);
 	}
 
 }

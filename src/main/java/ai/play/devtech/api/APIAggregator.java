@@ -1,5 +1,6 @@
 package ai.play.devtech.api;
 
+import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.Arrays;
@@ -9,7 +10,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import ai.play.devtech.APIObject;
-import ai.play.devtech.api.caches.SimpleAPICache;
+import ai.play.devtech.api.caches.APICache;
+import ai.play.devtech.api.caches.AdvancedAPICache;
+import ai.play.devtech.api.caches.ModularAPICache;
 import ai.play.devtech.api.queries.NationsQuery;
 import ai.play.devtech.core.api.Alliance;
 import ai.play.devtech.core.api.AllianceExcerpt;
@@ -27,7 +30,6 @@ import ai.play.devtech.core.api.tradeprice.TradePrice;
 import ai.play.devtech.core.enums.Resource;
 import ai.play.devtech.core.enums.Urls;
 import ai.play.devtech.core.errors.UnsuccessfullAPIException;
-import ai.play.devtech.core.interfaces.APICache;
 
 /**
  * An object that is used to interface with the API
@@ -45,6 +47,8 @@ public class APIAggregator {
 	 *
 	 * @param key
 	 * @param cache
+	 * 
+	 * @see {@link AdvancedAPICache}, {@link ModularAPICache}
 	 */
 	public APIAggregator(String key, APICache cache) {
 		this.cache = cache;
@@ -60,7 +64,7 @@ public class APIAggregator {
 	 * @param initialsize initial size
 	 */
 	public APIAggregator(String key, TemporalUnit unit, int time, int initialsize) {
-		this(key, new SimpleAPICache(unit, time, initialsize));
+		this(key, new ModularAPICache(true, null, Duration.of(time, unit)));
 	}
 
 	/**
@@ -71,29 +75,6 @@ public class APIAggregator {
 	 */
 	public APIAggregator(String key) {
 		this(key, ChronoUnit.HOURS, 1, 50);
-	}
-
-	/**
-	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)} but with
-	 * 1 hour default
-	 *
-	 * @param key         key
-	 * @param initialsize initial size of cache
-	 */
-	public APIAggregator(String key, int initialsize) {
-		this(key, ChronoUnit.HOURS, 1, initialsize);
-	}
-
-	/**
-	 * {@link APIAggregator#APIAggregator(String, TemporalUnit, int, int)} but with
-	 * default 50 initial capacity
-	 *
-	 * @param key
-	 * @param unit
-	 * @param time
-	 */
-	public APIAggregator(String key, TemporalUnit unit, int time) {
-		this(key, unit, time, 50);
 	}
 
 	public WarAttack[] getAttacks(int warid) {

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ai.play.devtech.APIObject;
 import ai.play.devtech.core.objects.manipulation.DataName;
-import ai.play.devtech.core.util.strings.ToString;
+import ai.play.devtech.core.util.s.Strings;
 
 /**
  * The best price to buy at
@@ -46,7 +46,7 @@ public class LowestBuy extends APIObject {
 
 	@Override
 	public String toString() {
-		return ToString.toJson(this);
+		return Strings.toJson(this);
 	}
 
 	@Override

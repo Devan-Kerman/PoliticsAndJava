@@ -1,4 +1,4 @@
-package ai.play.devtech.core.fun;
+package ai.play.devtech.core.util.misc;
 
 import sun.misc.Unsafe;
 import java.lang.reflect.Array;

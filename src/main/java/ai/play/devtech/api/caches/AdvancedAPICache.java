@@ -1,13 +1,5 @@
 package ai.play.devtech.api.caches;
 
-import ai.play.devtech.core.errors.RequestDeniedException;
-import ai.play.devtech.core.interfaces.APICache;
-import ai.play.devtech.core.interfaces.Evictor;
-import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
-import ai.play.devtech.core.util.logic.ExceptionWrapper;
-import ai.play.devtech.core.util.logic.Lock;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -17,6 +9,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import ai.play.devtech.api.caches.util.locks.Lock;
+import ai.play.devtech.api.caches.util.locks.StandardLock;
+import ai.play.devtech.core.errors.RequestDeniedException;
+import ai.play.devtech.core.interfaces.Evictor;
+import ai.play.devtech.core.objects.manipulation.ObjectBuilder;
+import ai.play.devtech.core.util.logic.ExceptionWrapper;
+
 /**
  * A customizable APICache
  *
@@ -24,7 +26,7 @@ import java.util.function.Function;
  */
 public class AdvancedAPICache implements APICache {
 	private List<Evictor> evictors;
-	private Lock<String> lock = new Lock<>();
+	private Lock<String> lock = new StandardLock<>();
 	private static final Gson GSON = new GsonBuilder().setLenient().create();
 	private Map<String, Object> cache = new ConcurrentHashMap<>();
 

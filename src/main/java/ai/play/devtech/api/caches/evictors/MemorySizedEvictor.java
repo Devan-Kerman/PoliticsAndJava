@@ -1,11 +1,12 @@
 package ai.play.devtech.api.caches.evictors;
 
+import java.util.Collections;
 import java.util.Map;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-import ai.play.devtech.core.fun.UnsafeUtil;
 import ai.play.devtech.core.interfaces.Evictor;
+import ai.play.devtech.core.util.misc.UnsafeUtil;
 
 /**
  * Evitor that evicts based on the amount of memory consumed
@@ -14,7 +15,7 @@ import ai.play.devtech.core.interfaces.Evictor;
  */
 public class MemorySizedEvictor implements Evictor {
 
-	private Queue<String> urls;
+	private Set<String> urls;
 	private long maxBytes;
 	private long current;
 
@@ -23,12 +24,11 @@ public class MemorySizedEvictor implements Evictor {
 	 */
 	public MemorySizedEvictor(long maxBytes) {
 		this.maxBytes = maxBytes;
-		urls = new ConcurrentLinkedQueue<>();
+		urls = Collections.newSetFromMap(new ConcurrentHashMap<>());
 	}
 
 	@Override
 	public boolean newEntry(Map<String, Object> cache, String entry, Object result) {
-		urls.remove(entry);
 		urls.add(entry);
 		return true;
 	}
@@ -45,7 +45,6 @@ public class MemorySizedEvictor implements Evictor {
 
 	@Override
 	public boolean newRequest(Map<String, Object> cache, String request) {
-		urls.remove(request);
 		urls.add(request);
 		return true;
 	}
